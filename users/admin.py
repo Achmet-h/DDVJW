@@ -11,4 +11,5 @@ class UserAdmin(admin.ModelAdmin):
     ordering = ('email',)
     list_filter = ('role', 'is_active', 'is_staff')
 
+
 admin.site.register(User, UserAdmin)
