@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_bootstrap5",
     "content_app",
+    "users"
 
 ]
 
@@ -73,22 +74,24 @@ WSGI_APPLICATION = "DDVJW.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-# AUTH_USER_MODEL = 'content_app.User'
+
+
+AUTH_USER_MODEL = 'users.User'
 
 DATABASES = {
-    # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": BASE_DIR / "db.sqlite3",
-    # }
-
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "ddvjw_db",
-        "USER": "root",
-        "PASSWORD": "4206",
-        "HOST": "127.0.0.1",
-        "PORT": "3306"
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
+
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "ddvjw_db",
+    #     "USER": "root",
+    #     "PASSWORD": "4206",
+    #     "HOST": "127.0.0.1",
+    #     "PORT": "3306"
+    # }
 }
 
 # Password validation
