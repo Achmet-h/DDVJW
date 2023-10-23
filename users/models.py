@@ -3,8 +3,13 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.utils import timezone
 
 
+class Role(models.TextChoices):
+    TRAINER = 'trainer', 'Trainer'
+    CLIENT = 'client', 'Client'
+
+
 class CustomAccountManager(BaseUserManager):
-    def create_user(self, email, first_name, last_name, role, telephone=None, school_name=None, password=None,
+    def create_user(self, email, first_name, last_name, role=Role.CLIENT, telephone=None, school_name=None, password=None,
                     **other_fields):
         if not email:
             raise ValueError("Users must have an email address")
@@ -16,11 +21,11 @@ class CustomAccountManager(BaseUserManager):
             role=role,
             telephone=telephone,
             school_name=school_name,
-            is_staff=other_fields.get('is_staff', False),
-            is_superuser=other_fields.get('is_superuser', False)
+            **other_fields
         )
 
-        if role == Role.TRAINER:
+        # If the role is TRAINER and is_staff is not explicitly set to True, then make them staff
+        if role == Role.TRAINER and not other_fields.get('is_staff', False):
             user.is_staff = True
 
         user.set_password(password)
@@ -31,18 +36,17 @@ class CustomAccountManager(BaseUserManager):
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_superuser', True)
         other_fields.setdefault('is_active', True)
+        other_fields.setdefault('role', Role.TRAINER)
 
         if other_fields.get('is_staff') is not True:
             raise ValueError("Superuser must be assigned to is_staff=True")
         if other_fields.get('is_superuser') is not True:
             raise ValueError("Superuser must be assigned to is_superuser=True")
+        if other_fields.get('is_active') is not True:
+            raise ValueError("Superuser must be assigned to is_active=True")
 
-        return self.create_user(email, first_name, last_name, role=Role.TRAINER, password=password, **other_fields)
+        return self.create_user(email, first_name, last_name, password=password, **other_fields)
 
-
-class Role(models.TextChoices):
-    TRAINER = 'trainer', 'trainer'
-    CLIENT = 'client', 'client'
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -52,13 +56,20 @@ class User(AbstractBaseUser, PermissionsMixin):
     telephone = models.CharField(max_length=15, blank=True, null=True)
     school_name = models.CharField(max_length=255, blank=True, null=True)
     role = models.CharField(max_length=255, choices=Role.choices, default=Role.CLIENT)
-
-    is_active = models.BooleanField(default=False)  # If the user is currently active, this can also be changed to
-    # verify using an email
-    is_staff = models.BooleanField(default=False)  # If the user can access the Django admin site
+    is_active = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
 
     def __str__(self):
         return self.first_name
+
+    def get_short_name(self):
+        return self.first_name
+
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    def get_email(self):
+        return self.email
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
