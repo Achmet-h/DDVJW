@@ -6,3 +6,6 @@ from django.http import HttpResponse
 
 def home(request):
     return render(request, 'content_app/home.html')
+
+
+

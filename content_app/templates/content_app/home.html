@@ -3,53 +3,225 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'content_app/css/styles.css' %}">
     <title>Didactiek Die Voor Jou Werkt</title>
     {% bootstrap_css %}
 </head>
-
-<body>
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container d-flex justify-content-between">
-            <a class="navbar-brand" href="#">
-                <img src="{% static '/content_app/logo.png' %}" alt="Logo" width="100"> <!-- Adjust width as needed -->
-                Didactiek Die Voor Jou Werkt
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+<body class="pp">
+<nav class="navbar navbar-expand-lg navbar-custom border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'content_app/logo_DDVJW.png' %}" alt="Logo" width="60" height="48"
+                 class="d-inline-block align-text-top"> <!-- Increase logo size -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" id="nav-link" href="#">Home</a>
+                </li>
+                <li class='nav-item dropdown'>
+                    <a class='nav-link dropdown-toggle' id="nav-link" href='#'
+                       role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                        Inspiratie </a>
+                    <ul class='dropdown-menu' aria-labelledby='navbarDropdown'>
+                        <li><a class='dropdown-item' id='nav-link-item' href='#'>Blog</a></li>
+                        <li><a class='dropdown-item' id='nav-link-item' href='#'>Podcast</a></li>
+                        <li><a class='dropdown-item' id='nav-link-item' href='#'>Artikel</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="nav-link" href="#">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+            <form class="d-flex">
+                <a href="#" class="btn me-2" id="btn-pri">Inloggen</a>
+                <a href="#" class="btn btn-outline-secondary" id="btn-sec">Lid worden</a>
+            </form>
+
         </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Inspiratie</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact ons</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Log in</a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-info"> Wordt lid</button>
-                    </li>
+    </div>
+</nav>
+
+
+<!-- header -->
+<div class="header-container">
+    <div class="header-left">
+        <p class="header-subtitle">DDVJW</p>
+        <h1 class="header-title">Didactiek Die Voor Jou Werkt</h1>
+        <p class="header-text">Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Nullam nec dapibus nisi.
+            Sed fermentum purus ac tempor vulputate.
+            Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Nullam nec dapibus nisi.
+            Sed fermentum purus ac tempor vulputate.
+            Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Nullam nec dapibus nisi.
+            Sed fermentum purus ac tempor vulputate.
+        </p>
+    </div>
+    <div class="header-right">
+        <img src='{% static 'content_app/header.png' %}' alt="Header Image" class="header-image">
+    </div>
+</div>
+
+<!-- roadmap -->
+<div class="responsive-container">
+    <img class="responsive-image" src="{% static 'content_app/roadmap.svg' %}" alt="Roadmap Image">
+</div>
+
+<!--  section1 ---------------------------->
+<div class="container-fluid my-5" id="info-container-b" style="background-color: #6FBEC3">
+    <div class="row justify-content-center">
+        <!-- Text Section -->
+        <div class="col-lg-5 mt-5">
+            <h1 class="mb-4" id="h1-info">Title Here</h1>
+            <p class="mb-4" id="p-info">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nullam nec dapibus nisi.
+                Sed fermentum purus ac tempor vulputate.</p>
+            <button class="btn btn btn-outline-secondary" id="btn-info">Button →</button>
+        </div>
+        <!-- Image Section -->
+        <div class="col-lg-5">
+            <div class="custom-img">
+                <img src='{% static 'content_app/dum-img.jpg' %}' alt="Placeholder Image" class="img-fluid rounded-5" id="info-img">
+                <div class="placeholder-img"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  section2 ---------------------------->
+<div class="container-fluid my-5" id="info-container-b">
+    <div class="row justify-content-center">
+        <!-- Text Section -->
+         <!-- Image Section -->
+        <div class="col-lg-5">
+            <div class="custom-img">
+                <img src='{% static 'content_app/dum-img.jpg' %}' alt="Placeholder Image" class="img-fluid rounded-5" id="info-img">
+                <div class="placeholder-img"></div>
+            </div>
+        </div>
+        <div class="col-lg-5 mt-5">
+            <h1 class="mb-4" id="h1-info2">Title Here</h1>
+            <p class="mb-4" id="p-info2">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nullam nec dapibus nisi.
+                Sed fermentum purus ac tempor vulputate.</p>
+            <button class="btn btn btn-outline-secondary" id="btn-info">Button →</button>
+        </div>
+    </div>
+</div>
+
+{#FAQ section#}
+<div class="container-fluid my-5" id="faq-container">
+    <!-- FAQ Header -->
+    <h2 class="text-center mb-4">FAQ</h2>
+    <p class="text-center mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec dapibus nisi. Sed fermentum purus ac tempor vulputate.</p>
+
+    <!-- Accordion -->
+    <div class="accordion" id="faqAccordion">
+        <!-- FAQ Item 1 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Answer for the first question.
+                </div>
+            </div>
+        </div>
+        <!-- FAQ Item 2 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Answer for the second question.
+                </div>
+            </div>
+        </div>
+        <!-- FAQ Item 3 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    Answer for the third question.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FAQ Button -->
+    <div class="text-center mt-5">
+        <a href="#" class="btn btn-outline-secondary" id="btn-sec">FAQ →</a>
+    </div>
+</div>
+
+
+
+{#footer section#}
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- First Column -->
+            <div class="col-md-4">
+                <h4>Onderwijsbureau van Leeuwen</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare cursus sed nunc eget dictum. Sed ornare cursus sed nunc eget dictum.</p>
+            </div>
+            <!-- Second Column -->
+            <div class="col-md-4" id="sec-col">
+                <h4>Contact</h4>
+                <ul class="footer-links">
+                    <li>[adres]</li>
+                    <li>[postcode]</li>
+                    <li>[stad]</li>
+                    <li>[telefoonnummer]</li>
                 </ul>
             </div>
-    </nav>
+            <!-- Third Column -->
+            <div class="col-md-4" id="third-col">
+                <h4>DDVJW</h4>
+                <ul class="footer-links">
+                    <li>Home</li>
+                    <li>Inspiratie</li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Footer Bottom Text -->
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <p>Onderwijsbureauvanleeuwen 2023, All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-    {% bootstrap_javascript %}
+{% bootstrap_javascript %}
 </body>
-
 </html>
+
+
+
+
+
+

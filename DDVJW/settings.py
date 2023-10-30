@@ -26,7 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,8 +36,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_bootstrap5",
+    "snowebsvg",
     "content_app",
     "users"
+
 
 ]
 
@@ -57,7 +58,8 @@ ROOT_URLCONF = "DDVJW.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "content_app/templates/content_app"), os.path.join(BASE_DIR, "users/templates/users")],
+        "DIRS": [os.path.join(BASE_DIR, "content_app/templates/content_app"),
+                 os.path.join(BASE_DIR, "users/templates/users")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -75,7 +77,7 @@ WSGI_APPLICATION = "DDVJW.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
+# using custom user model
 AUTH_USER_MODEL = 'users.User'
 
 DATABASES = {
@@ -126,7 +128,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "content_app/static/"
+STATIC_URL = "static/"
+STATICFILES_DIRS = [
+    BASE_DIR / "/content_app/static"
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

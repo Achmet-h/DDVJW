@@ -48,7 +48,6 @@ class CustomAccountManager(BaseUserManager):
         return self.create_user(email, first_name, last_name, password=password, **other_fields)
 
 
-
 class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
