@@ -8,4 +8,9 @@ def home(request):
     return render(request, 'content_app/home.html')
 
 
+def FAQ(request):
+    return render(request, 'content_app/FAQ.html')
+
+
+
 

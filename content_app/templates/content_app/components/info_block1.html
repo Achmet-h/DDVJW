@@ -1,0 +1,19 @@
+{% load static%}
+<div class="container-fluid my-5" id="info-container-1">
+    <div class="row justify-content-center">
+        <!-- Text Section -->
+        <div class="col-lg-5 mt-5">
+            <h1 class="mb-4" id="h1-info-1">Title Here</h1>
+            <p class="mb-4" id="p-info-1">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit. Nullam nec dapibus nisi.
+                Sed fermentum purus ac tempor vulputate.</p>
+            <button class="btn btn-outline-secondary" id="btn-info">Button →</button>
+        </div>
+        <!-- Image Section -->
+        <div class="col-lg-5">
+            <div class="custom-img">
+                <img src='{% static 'content_app/dum-img.jpg' %}' alt="Placeholder Image" class="img-fluid rounded-5" id="info-img-1">
+            </div>
+        </div>
+    </div>
+</div>

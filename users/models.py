@@ -9,7 +9,8 @@ class Role(models.TextChoices):
 
 
 class CustomAccountManager(BaseUserManager):
-    def create_user(self, email, first_name, last_name, role=Role.CLIENT, telephone=None, school_name=None, password=None,
+    def create_user(self, email, first_name, last_name, role=Role.CLIENT, telephone=None, school_name=None,
+                    password=None,
                     **other_fields):
         if not email:
             raise ValueError("Users must have an email address")
@@ -74,3 +75,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = CustomAccountManager()
+
