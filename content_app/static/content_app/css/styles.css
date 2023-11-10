@@ -16,7 +16,7 @@
 
 #nav-link-item:hover {
     background-color: #6FBEC3;
-    color: #F5F5F5;  /* Make text color white when button is hovered */
+    color: #F5F5F5;
 }
 
 .navbar-nav {
@@ -30,7 +30,7 @@
 
 #btn-pri,#btn-pri:hover {
     background-color: #6FBEC3;
-    color: #F5F5F5;  /* Make text color white when button is hovered */
+    color: #F5F5F5;
 }
  #btn-sec{
     color: #6FBEC3;
@@ -158,29 +158,42 @@
 }
 /*FAQ container---------------------*/
 #faq-container {
-    background-color: #E0F0FF;
+    background-color: #6FBEC3; /* This sets the background color to a light grey, similar to the screenshot */
     padding: 50px;
     border-radius: 5px;
- }
+}
 
-#faq-container h2 {
-    color: #6FBEC3;
+#faq-container h2, #faq-container p {
+    color: #333333; /* This sets the text color to a dark grey */
 }
 
 .accordion-button {
-    background-color: #E0F0FF;
-    color: #6FBEC3;
-    border-color: #6FBEC3;
-    }
+    background-color: #FFFFFF; /* This sets the accordion button background color to white */
+    color: #333333; /* This sets the accordion button text color to dark grey */
+    border-color: #DEE2E6; /* This is Bootstrap's default border color for buttons, which looks like the one in the screenshot */
+}
 
+.accordion-button:not(.collapsed) {
+    background-color: #E9ECEF; /* A slightly darker shade for the active accordion button */
+    color: #333333;
+}
 
+.accordion-button:focus {
+    box-shadow: none; /* Removes the focus outline for a cleaner look, if desired */
+}
+
+#btn-sec {
+    color: #333333; /* Sets the button text color to dark grey */
+    border-color: #333333; /* Assuming you want to keep this color for the button border as in your original CSS */
+}
+
+/* This ensures that the color is darker for the collapsed button text and lighter when expanded */
 .accordion-button.collapsed {
-    background-color: #6FBEC3;
-    color: #E0F0FF;
+    color: #6FBEC3;
 }
 
 
-/*footer*/
+/*footer -------------*/
 .footer {
      background-color: #f7f7f7;
      padding: 40px 0;
@@ -203,3 +216,18 @@
     color: #6FBEC3;
 }
 
+/*-----------------other styles for components-----------------*/
+/*-----------------Hero small-----------------*/
+.bg-light {
+  background-color: #E0F0FF!important;
+}
+
+.display-1 {
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+.lead {
+  font-size: 1.5rem;
+  font-weight: 300;
+}

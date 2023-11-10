@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class ContentType(models.TextChoices):
     article = 'article', 'article'
     podcast = 'podcast', 'podcast'
@@ -21,3 +20,18 @@ class Content(models.Model):
     def __str__(self):
         return self.title
 
+
+class Category(models.TextChoices):
+    didactiek = 'didactiek', 'didactiek'
+    begeleiding = 'begeleiding', 'begeleiding'
+    ondersteuning  = 'ondersteuning', 'ondersteuning'
+
+class FAQ(models.Model):
+    category = models.CharField(max_length=254, choices=Category.choices)
+    question = models.CharField(max_length=250)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question
+    def __str__(self):
+        return self.answer

@@ -13,13 +13,10 @@
     <link rel="icon" href="{% static 'content_app/favicon.ico' %}" type="image/x-icon"/>
 </head>
 <body class="pp">
-
-
 <!--include navbar-->
 {% include 'content_app/components/navbar.html' %}
-<!-- header -->
-{% include 'content_app/components/header.html' %}
-
+<!-- hero -->
+{% include 'content_app/components/hero.html' %}
 <!-- roadmap -->
 <div class="responsive-container">
     <img class="responsive-image" src="{% static 'content_app/roadmap.svg' %}" alt="Roadmap Image">
@@ -30,8 +27,7 @@
 {% include 'content_app/components/info_block2.html' %}
 <!--Faq section-->
 {% include 'content_app/components/FAQComponent.html' %}
-
-{#footer section#}
+<!--  info footer -->
 {% include 'content_app/components/footer.html' %}
 
 {% bootstrap_javascript %}
