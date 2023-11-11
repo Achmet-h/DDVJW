@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class ContentType(models.TextChoices):
     article = 'article', 'article'
     podcast = 'podcast', 'podcast'
@@ -8,11 +9,13 @@ class ContentType(models.TextChoices):
 
 class Content(models.Model):
     title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250)
+    slug = models.SlugField(max_length=250, unique=True)
     description = models.TextField()
     publish = models.DateTimeField(auto_now_add=True)
     isPremium = models.BooleanField()
     contentType = models.CharField(max_length=254, choices=ContentType.choices)
+    picture = models.ImageField(upload_to='media', blank=True, null=True)  # New field for the picture
+
 
     def Search(self):
         return Content.objects.filter(title__contains=self)

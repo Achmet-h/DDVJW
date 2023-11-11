@@ -1,9 +1,10 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-custom border-bottom">
     <div class="container-fluid justify-content-center">
-    <!-- make the logo-->
+        <!-- make the logo-->
         <a class="navbar-brand" href="#">
-                <img src="{% static 'content_app/horizental_logo.svg' %}" alt="Logo" class="d-inline-block align-text-top" id="my-image">
+            <img src="{% static 'content_app/horizental_logo.svg' %}" alt="Logo" class="d-inline-block align-text-top"
+                 id="my-image">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,21 +20,21 @@
                        role='button' data-bs-toggle='dropdown' aria-expanded='false'>
                         Inspiratie </a>
                     <ul class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                        <li><a class='dropdown-item' id='nav-link-item' href='#'>Blog</a></li>
+                        <li><a class='dropdown-item' id='nav-link-item' href='{% url 'blog_view' %}'>Blog</a></li>
+                        <li><a class='dropdown-item' id='nav-link-item' href='{% url 'articles_view' %}'>Artikels</a></li>
                         <li><a class='dropdown-item' id='nav-link-item' href='#'>Podcast</a></li>
-                        <li><a class='dropdown-item' id='nav-link-item' href='#'>Artikel</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="nav-link" href="{% url 'FAQ'%}">FAQ</a>
+                    <a class="nav-link" id="nav-link" href="{% url 'FAQ' %}">FAQ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="nav-link" href="">Contact</a>
                 </li>
             </ul>
             <form class="d-flex">
-                <a href="#" class="btn me-2" id="btn-pri">Inloggen</a>
-                <a href="#" class="btn btn-outline-secondary" id="btn-sec">Lid worden</a>
+                <a href="{% url 'login' %}" class="btn me-2" id="btn-pri">Inloggen</a>
+                <a href="{% url 'signup' %}" class="btn btn-outline-secondary" id="btn-sec">Lid worden</a>
             </form>
 
         </div>

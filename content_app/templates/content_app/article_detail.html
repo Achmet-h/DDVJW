@@ -1,0 +1,50 @@
+{% load django_bootstrap5 %}
+{% load static %}
+{% bootstrap_css %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'content_app/css/main.css' %}">
+    <title>{{ article.title }}</title>
+    <link rel="icon" href="{% static 'content_app/favicon-32x32.png' %}" type="image/x-icon"/>
+</head>
+<body class="pp">
+
+
+<!--include navbar-->
+{% include 'content_app/components/navbar.html' %}
+
+
+<div class="container article-content mt-5 mb-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- Article Image -->
+            {% if article.picture %}
+            <img src="{{ article.picture.url }}" alt="{{ article.title }}" class="article-image mb-3">
+            {% endif %}
+
+            <h1 class="mb-3">{{ article.title }}</h1>
+
+            <p class="text-muted">Published on: {{ article.publish|date:"d M, Y" }}</p>
+
+            <div>{{ article.description|safe }}</div>
+        </div>
+    </div>
+</div>
+
+{#footer section#}
+{% include 'content_app/components/footer.html' %}
+
+{% bootstrap_javascript %}
+</body>
+</html>
+
+
+
+
+
+
