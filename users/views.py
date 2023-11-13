@@ -9,11 +9,11 @@ def signup_view(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # Make the user active for this example; consider sending email confirmation in real-world scenarios.
+            # User activation can be done here if needed by an email sent to the user
             user.is_active = True
             user.save()
             login(request, user)
-            return redirect('some_view_name')  # Redirect to a success page or home page
+            return redirect('login')  # Redirect to a success page or home page
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
