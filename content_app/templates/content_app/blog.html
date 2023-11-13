@@ -53,8 +53,7 @@
                             {% if blog.picture %}
                                 <img class="card-img-top" src="{{ blog.picture.url }}" alt="{{ blog.title }}">
                             {% else %}
-                                <!-- Load a default image if no picture is found -->
-                                <img class="card-img-top" src="{% static 'content_app/images/default-article.jpg' %}"
+=                                <img class="card-img-top" src="{% static 'content_app/images/default-article.jpg' %}"
                                      alt="Default image">
                             {% endif %}
                             <div class="card-body">
@@ -69,15 +68,13 @@
         </div>
     {% else %}
         {% if query %}
-            <!-- Show an image if a search term was entered but no articles were found -->
             <div class="text-center">
                 <img src="{% static 'content_app/404_not_found.jpg' %}" alt="No articles found" class="img-fluid">
-                <p>No blogs found for your search.</p>
+                <p>Geen blogs gevonden!</p>
             </div>
         {% else %}
-            <!-- Optional: Display a message if no search was made -->
             <div class="text-center">
-                <p>Type in the search bar to find blogs.</p>
+                <p>Geen blogs gevonden!</p>
             </div>
         {% endif %}
     {% endif %}

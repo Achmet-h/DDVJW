@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -36,12 +37,31 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_bootstrap5",
-    "snowebsvg",
     "content_app",
     "users"
-
-
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Trainer Panel",
+    "site_header": "Adminstratie",
+    "site_icon": "content_app/favicon-32x32.png",
+    "welcome_sign": "Welkom naar de Trainer Dashboard",
+    "default_theme": "slate",
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]}
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "show_ui_builder": False,
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "content_app.Content": "fas fa-photo-video",
+        "content_app.faq": "fas fa-comments",
+        "users.User": "fas fa-user-circle",
+    },
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -135,7 +155,6 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'content_app/static/content_app/media')
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

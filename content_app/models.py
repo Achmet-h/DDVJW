@@ -16,7 +16,6 @@ class Content(models.Model):
     contentType = models.CharField(max_length=254, choices=ContentType.choices)
     picture = models.ImageField(upload_to='media', blank=True, null=True)  # New field for the picture
 
-
     def Search(self):
         return Content.objects.filter(title__contains=self)
 
@@ -27,7 +26,8 @@ class Content(models.Model):
 class Category(models.TextChoices):
     didactiek = 'didactiek', 'didactiek'
     begeleiding = 'begeleiding', 'begeleiding'
-    ondersteuning  = 'ondersteuning', 'ondersteuning'
+    ondersteuning = 'ondersteuning', 'ondersteuning'
+
 
 class FAQ(models.Model):
     category = models.CharField(max_length=254, choices=Category.choices)
@@ -36,5 +36,8 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+
     def __str__(self):
         return self.answer
+
+

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import FAQ, Content, ContentType
 from collections import defaultdict
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -62,3 +63,11 @@ def blog_search(request):
         blogs = Content.objects.filter(contentType=ContentType.blog)
 
     return render(request, 'blog.html', {'blogs': blogs, 'query': query})
+
+
+@login_required
+def premium_articles_view(request):
+    premium_contents = Content.objects.filter(isPremium=True, ContentType='article')
+    return render(request, 'premium_articles.html', {'premium_contents': premium_contents})
+
+

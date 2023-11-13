@@ -1,11 +1,10 @@
 
 .navbar-custom {
-    background-color: #E0F0FF;
-    border: 1px solid #E0E0E0;
+    background-color: #f7f7f7;
 }
 #my-image {
-    width: 200px !important;  /* Replace with your desired width */
-    height: 80px !important;  /* Replace with your desired height */
+    width: 100px !important;  /* Replace with your desired width */
+    height: 50px !important;  /* Replace with your desired height */
     object-fit: contain;
 }
 
@@ -157,10 +156,17 @@
     margin-left: 160px;
 }
 /*FAQ container---------------------*/
-#faq-container {
-    background-color: #6FBEC3; /* This sets the background color to a light grey, similar to the screenshot */
+#faq-container-in-separate-page {
+    display: flex;
+    justify-content: center;
     padding: 50px;
-    border-radius: 5px;
+    border-radius: 10px;
+}
+#faq-container{
+    background-color: #6FBEC3;
+    padding: 50px;
+    border-radius: 10px;
+
 }
 
 #faq-container h2, #faq-container p {
@@ -169,8 +175,8 @@
 
 .accordion-button {
     background-color: #FFFFFF; /* This sets the accordion button background color to white */
-    color: #333333; /* This sets the accordion button text color to dark grey */
-    border-color: #DEE2E6; /* This is Bootstrap's default border color for buttons, which looks like the one in the screenshot */
+    color: black; /* This sets the accordion button text color to dark grey */
+    border-color: black; /* This is Bootstrap's default border color for buttons, which looks like the one in the screenshot */
 }
 
 .accordion-button:not(.collapsed) {
@@ -189,7 +195,7 @@
 
 /* This ensures that the color is darker for the collapsed button text and lighter when expanded */
 .accordion-button.collapsed {
-    color: #6FBEC3;
+    color: black;
 }
 
 

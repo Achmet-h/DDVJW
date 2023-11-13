@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.utils import timezone
-
 
 class Role(models.TextChoices):
     TRAINER = 'trainer', 'Trainer'

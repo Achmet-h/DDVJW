@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
+from django.contrib.auth import logout
 from .forms import SignUpForm, LoginForm
 
 
@@ -23,7 +24,7 @@ def login_view(request):
         form = LoginForm(request=request, data=request.POST)
         if form.is_valid():
             login(request, form.get_user())
-            return redirect('some_view_name')  # Redirect to a success page or home page
+            return redirect('home')  # Redirect to a success page or home page
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
@@ -31,3 +32,8 @@ def login_view(request):
 
 def test_view(request):
     return render(request, "test.html")
+
+
+def custom_logout(request):
+    logout(request)
+    return redirect('home')

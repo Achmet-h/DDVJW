@@ -1,10 +1,12 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-custom border-bottom">
+<nav class="navbar navbar-expand-lg navbar-custom">
     <div class="container-fluid justify-content-center">
-        <!-- make the logo-->
-        <a class="navbar-brand" href="#">
-            <img src="{% static 'content_app/horizental_logo.svg' %}" alt="Logo" class="d-inline-block align-text-top"
+        <!-- make the logo -->
+        <a class="navbar-brand d-flex" href="{% url 'home' %}">
+            <img src="{% static 'content_app/Logo_DDVJW_splitted.png' %}" alt="Logo" class="d-inline-block align-text-top"
                  id="my-image">
+            <p class="brand-text mt-3">DDVJW
+</p>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,30 +15,53 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" id="nav-link" href="#">Home</a>
+                    <a class="nav-link" id="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class='nav-item dropdown'>
                     <a class='nav-link dropdown-toggle' id="nav-link" href='#'
                        role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                        Inspiratie </a>
+                        Inspiratie
+                    </a>
                     <ul class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                        <li><a class='dropdown-item' id='nav-link-item' href='{% url 'blog_view' %}'>Blog</a></li>
-                        <li><a class='dropdown-item' id='nav-link-item' href='{% url 'articles_view' %}'>Artikels</a></li>
-                        <li><a class='dropdown-item' id='nav-link-item' href='#'>Podcast</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a class='dropdown-item' id='nav-link-item' href='#'>Blog
+                                (Premium)</a></li>
+                            <li><a class='dropdown-item' id='nav-link-item' href='{% url 'premium_articles_view' %}'>Artikels
+                                (Premium)</a></li>
+                            <li><a class='dropdown-item' id='nav-link-item' href='#'>Podcast (Premium)</a></li>
+                        {% else %}
+                            <li><a class='dropdown-item' id='nav-link-item' href='{% url 'blog_view' %}'>Blog</a></li>
+                            <li><a class='dropdown-item' id='nav-link-item'
+                                   href='{% url 'articles_view' %}'>Artikels</a></li>
+                            <li><a class='dropdown-item' id='nav-link-item' href='#'>Podcast</a></li>
+
+                        {% endif %}
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="nav-link" href="{% url 'FAQ' %}">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="nav-link" href="">Contact</a>
+                    <a class="nav-link" id="nav-link" href="#">Contact</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <a href="{% url 'login' %}" class="btn me-2" id="btn-pri">Inloggen</a>
-                <a href="{% url 'signup' %}" class="btn btn-outline-secondary" id="btn-sec">Lid worden</a>
-            </form>
 
+            {% if user.is_authenticated %}
+                <!-- User is logged in -->
+                <div class="navbar-text d-flex m-2">
+                    <h4 class="m-2">Welkom {{ user.first_name }}!</h4>
+                    <h4 class="m-2"><a href="#"><i class="bi bi-person-circle"></i></a></h4>
+                </div>
+                <form class="d-flex p-3 m-0">
+                    <a href="{% url 'logout' %}" class="btn btn-outline-secondary" id="btn-sec">Uitloggen</a>
+                </form>
+            {% else %}
+                <!-- User is not logged in -->
+                <form class="d-flex">
+                    <a href="{% url 'login' %}" class="btn me-2" id="btn-pri">Inloggen</a>
+                    <a href="{% url 'signup' %}" class="btn btn-outline-secondary" id="btn-sec">Lid worden</a>
+                </form>
+            {% endif %}
         </div>
     </div>
 </nav>
