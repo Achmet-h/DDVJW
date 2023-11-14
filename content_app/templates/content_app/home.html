@@ -19,16 +19,26 @@
 {% include 'content_app/components/navbar.html' %}
 <!-- hero -->
 {% include 'content_app/components/hero.html' %}
-<!-- roadmap -->
-<div class="responsive-container">
-    <img class="responsive-image" src="{% static 'content_app/roadmap.svg' %}" alt="Roadmap Image">
-</div>
+{#<!-- roadmap -->#}
+{#<div class="responsive-container">#}
+{#    <img class="responsive-image" src="{% static 'content_app/roadmap.svg' %}" alt="Roadmap Image">#}
+{#</div>#}
+<!--  info block 3 -->
+{% include 'content_app/components/info_block3.html' %}
 <!--  info block 1 -->
 {% include 'content_app/components/info_block1.html' %}
 <!--  info block 2 -->
 {% include 'content_app/components/info_block2.html' %}
 <!--Faq section-->
 {% include 'content_app/components/FAQComponent.html' %}
+{#article section ------------#}
+<div>
+{% include 'content_app/components/article_section.html ' %}
+</div>
+{#article section ------------#}
+<div>
+{% include 'content_app/components/blog_section.html ' %}
+</div>
 <!--  info footer -->
 {% include 'content_app/components/footer.html' %}
 

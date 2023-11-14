@@ -6,7 +6,9 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
-    return render(request, 'content_app/home.html')
+    articles = Content.objects.filter(contentType=ContentType.article).order_by('-publish')[:4]
+    blogs = Content.objects.filter(contentType=ContentType.blog).order_by('-publish')[:4]
+    return render(request, 'home.html', {'articles': articles, 'blogs': blogs})
 
 
 def faq_view(request):
