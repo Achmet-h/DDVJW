@@ -1,7 +1,8 @@
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login
 from django.contrib.auth import logout
-from .forms import SignUpForm, LoginForm
+from .forms import SignUpForm, LoginForm, ContactForm
 
 
 def signup_view(request):
@@ -30,10 +31,32 @@ def login_view(request):
     return render(request, 'login.html', {'form': form})
 
 
-def test_view(request):
-    return render(request, "test.html")
-
-
 def custom_logout(request):
     logout(request)
     return redirect('home')
+
+
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            telephone = form.cleaned_data['telephone']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+
+            # assemble the message
+            message = f'Bericht van {first_name} {last_name} {telephone} ({email}):\n{message}'
+
+            # send the email
+            send_mail(
+                'Contactformulier DDVJW',
+                message,
+                email,
+                ['hosting mailadres'], fail_silently=False,
+            )
+            return render(request, 'content_app/components/thankyou.html')
+    else:
+        form = ContactForm()
+    return render(request, 'content_app/contact.html', {'form': form})

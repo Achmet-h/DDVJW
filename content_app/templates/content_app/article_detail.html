@@ -1,24 +1,9 @@
-{% load django_bootstrap5 %}
+{% extends "base/base.html" %}
 {% load static %}
-{% bootstrap_css %}
+{% block title %}{{ article.title }}{% endblock %}
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'content_app/css/main.css' %}">
-    <title>{{ article.title }}</title>
-    <link rel="icon" href="{% static 'content_app/favicon-32x32.png' %}" type="image/x-icon"/>
-</head>
-<body class="pp">
-
-
-<!--include navbar-->
-{% include 'content_app/components/navbar.html' %}
-
-
+{% block template %}
 <div class="container article-content mt-5 mb-5">
     <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -35,16 +20,6 @@
         </div>
     </div>
 </div>
-
-{#footer section#}
-{% include 'content_app/components/footer.html' %}
-
-{% bootstrap_javascript %}
-</body>
-</html>
-
-
-
-
+{% endblock %}
 
 

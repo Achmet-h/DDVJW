@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 
 class ContentType(models.TextChoices):
@@ -10,7 +11,7 @@ class ContentType(models.TextChoices):
 class Content(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique=True)
-    description = models.TextField()
+    description = RichTextField()
     publish = models.DateTimeField(auto_now_add=True)
     isPremium = models.BooleanField()
     contentType = models.CharField(max_length=254, choices=ContentType.choices)
@@ -24,9 +25,9 @@ class Content(models.Model):
 
 
 class Category(models.TextChoices):
-    didactiek = 'didactiek', 'didactiek'
-    begeleiding = 'begeleiding', 'begeleiding'
-    ondersteuning = 'ondersteuning', 'ondersteuning'
+    Didactiek = 'Didactiek', 'Didactiek'
+    Begeleiding = 'Begeleiding', 'Begeleiding'
+    Ondersteuning = 'Ondersteuning', 'Ondersteuning'
 
 
 class FAQ(models.Model):

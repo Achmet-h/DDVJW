@@ -19,16 +19,27 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-0wbwe64^mg-imerphf6x+yunf$w__-8%lvmn6ucict_a1u=2u8o9"
+SECRET_KEY = "dfjnghjzxdfngkdxfnrgjdrgiu+yunf$w__-8%lvmn6ucict_a1u=2u8o9"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'email'
+EMAIL_HOST_PASSWORD = 'password'
+
+
 
 ALLOWED_HOSTS = []
 
 # Application definition
 
 INSTALLED_APPS = [
+    "ckeditor",
     "jazzmin",
     "snowebsvg",
     "django.contrib.admin",
@@ -147,6 +158,10 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
+
+# Use https for the site instead of http
+SECURE_SSL_REDIRECT = False
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

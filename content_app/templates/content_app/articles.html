@@ -1,22 +1,9 @@
+{% extends "base/base.html" %}
 {% load static %}
-{% load django_bootstrap5 %}
+{% block title %} Artikels {% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% bootstrap_css %}
-    <link rel="stylesheet" href="{% static 'content_app/css/main.css' %}">
-    <title>Didactiek Die Voor Jou Werkt</title>
-    <link rel="icon" href="{% static 'content_app/favicon-32x32.png' %}" type="image/x-icon"/>
-</head>
 
-<body class="pp">
-
-<!--include navbar-->
-{% include 'content_app/components/navbar.html' %}
-
+{% block template %}
 <!-- hero small -->
 <div class="container-fluid bg-light text-center py-5">
     <div class="row">
@@ -59,7 +46,7 @@
                             {% endif %}
                             <div class="card-body">
                                 <h5 class="card-title">{{ article.title }}</h5>
-                                <p class="card-text">{{ article.description|truncatewords:50 }}</p>
+                                <p class="card-text">{{ article.description|truncatewords:50|safe }}</p>
                                 <p class="card-date"> {{ article.publish|date:"d M, Y" }}</p>
                             </div>
                         </div>
@@ -81,9 +68,4 @@
     {% endif %}
 </div>
 
-<!--footer section-->
-{% include 'content_app/components/footer.html' %}
-
-{% bootstrap_javascript %}
-</body>
-</html>
+{% endblock template %}

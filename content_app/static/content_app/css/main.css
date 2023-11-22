@@ -225,24 +225,19 @@
     padding: 50px;
     border-radius: 10px;
 }
-
 #faq-container {
     background-color: #6FBEC3;
     padding: 50px;
     border-radius: 10px;
-
 }
-
 #faq-container h2, #faq-container p {
     color: #333333; /* This sets the text color to a dark grey */
 }
-
 .accordion-button {
     background-color: #FFFFFF; /* This sets the accordion button background color to white */
     color: black; /* This sets the accordion button text color to dark grey */
     border-color: black; /* This is Bootstrap's default border color for buttons, which looks like the one in the screenshot */
 }
-
 .accordion-button:not(.collapsed) {
     background-color: #E9ECEF; /* A slightly darker shade for the active accordion button */
     color: #333333;
@@ -251,17 +246,14 @@
 .accordion-button:focus {
     box-shadow: none; /* Removes the focus outline for a cleaner look, if desired */
 }
-
 #btn-sec {
     color: #333333; /* Sets the button text color to dark grey */
     border-color: #333333; /* Assuming you want to keep this color for the button border as in your original CSS */
 }
-
 /* This ensures that the color is darker for the collapsed button text and lighter when expanded */
 .accordion-button.collapsed {
     color: black;
 }
-
 
 /*footer -------------*/
 .footer {

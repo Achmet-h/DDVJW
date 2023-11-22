@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %} Bericht verstuurd {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Bedankt voor uw bericht!</h1>
+                <p>Wij zullen zo spoedig mogelijk contact met u opnemen.</p>
+                <a href="{% url 'home' %}">Terug naar de homepagina</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

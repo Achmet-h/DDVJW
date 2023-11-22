@@ -1,0 +1,88 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %} Contact ons {% endblock %}
+
+{% block template %}
+    <!-- hero small -->
+    <div class="container-fluid bg-light text-center py-5">
+        <div class="row">
+            <div class="col">
+                <h1 class="display-1">Contact ons</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <!-- contact Section -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Contact Form -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Contact ons</h3>
+                        <p class="text-muted text-center mb-4">Enim tempor eget pharetra facilisis sed maecenas
+                            adipiscing...</p>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.non_field_errors }}
+                            <div class="mb-3 styled-input">
+                                <label for="first_name">Voornaam</label>
+                                <input type="text" name="first_name" id="first_name" class="form-control" required>
+                            </div>
+                            <div class="mb-3 styled-input">
+                                <label for="last_name">Achternaam</label>
+                                <input type="text" name="last_name" id="last_name" class="form-control" required>
+                                {% if form.username.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.first_name.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="email">Emailadres</label>
+                                <input type="email" name="email" id="email" class="form-control" required>
+                                {% if form.email.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.email.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="telephone">Telefoonnummer</label>
+                                <input type="tel" name="telephone" id="telephone" class="form-control" required>
+                                {% if form.telephone.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.telephone.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="message">Bericht</label>
+                                <textarea name="message" id="message" class="form-control" required></textarea>
+                                {% if form.message.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.message.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100" id="btn-pri">Verzenden</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 d-none d-md-block">
+                <!-- Placeholder for Right Side Image or Content -->
+                <div class="p-5">
+                    <h2 class="display-6">Molestiae rem</h2>
+                    <p class="lead">Provident cillum, autem! Cupidatat ratione eaque nascetur tempora atque alias!
+                        Incididunt adipisci. Inventore per cursus conubia, sint eaque nam, egestas? Alias ullam odio,
+                        nisi
+                        voluptatem platea, occaecat, aperiam quaerat doloremque, augue nesciunt porta cum atque tempus
+                        nisi
+                        mattis curabitur veritatis odit aliqua cursus at, praesentium convallis cum delectus, conubia
+                        error.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock template %}
