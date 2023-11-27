@@ -1,56 +1,10 @@
-
-.navbar-custom {
-    background-color: #f7f7f7;
-}
-
-#my-image {
-    width: 100px !important; /* Replace with your desired width */
-    height: 50px !important; /* Replace with your desired height */
-    object-fit: contain;
-}
-
-#nav-link:hover,
-#nav-link:active {
-    color: #6FBEC3;
-}
-
-#nav-link-item:hover {
-    background-color: #6FBEC3;
-    color: #F5F5F5;
-}
-
-.navbar-nav {
-    margin: 0 auto;
-}
-
-#btn-pri {
-    color: #6FBEC3;
-    border-color: #6FBEC3;
-}
-
-#btn-pri, #btn-pri:hover {
-    background-color: #6FBEC3;
-    color: #F5F5F5;
-}
-
-#btn-sec {
-    color: #6FBEC3;
-    border-color: #6FBEC3;
-}
-
-#btn-sec:hover {
-    background-color: #6FBEC3;
-    color: #F5F5F5; /* Make text color white when button is hovered */
-}
-
-
 /*header ------------------------------*/
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background-color: #E0F0FF; /* This is a placeholder color; adjust as needed */
+    background-color: #f7f7f7;
 }
 
 .header-left {
@@ -159,66 +113,11 @@
 }
 
 /*Info block 3 ---------------------*/
-.cards-container{
-    background-color: #f7f7f7;
-}
-.card-container {
-  width: 200px;
-  text-align: center;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  margin: auto;
-  position: relative; /* Needed for absolute positioning of children */
-}
 
-.world-icon {
-  width: 100px; /* Adjust as needed */
-  height: auto;
-  margin-bottom: 15px;
-  transition: transform 0.2s; /* Smooth transition for hover effect */
-}
-
-.icon-link {
-  display: block;
-  position: relative;
-}
-
-/* This will go inside your .icon-link container */
-.icon-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  font-size: 24px;
-  color: white;
-  pointer-events: none;
-}
-
-.icon-link:hover .icon-overlay {
-  color: #6FBEC3;
-  opacity: 5;
-}
-
-.card-content p {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-}
-
-.icon-link:hover .world-icon {
-  transform: scale(1.1); /* Slight zoom effect on hover */
-}
 
 /*FAQ container---------------------*/
+
+
 #faq-container-in-separate-page {
     display: flex;
     justify-content: center;
@@ -276,62 +175,15 @@
     text-decoration: none;
     color: black;
 }
+.footer-links li i  {
+    color: #6FBEC3;
+}
+.social-links a {
+    color: #6FBEC3;
+}
 
 .footer-links li a:hover {
     color: #6FBEC3;
 }
 
 /*-----------------other styles for components-----------------*/
-/*-----------------Hero small-----------------*/
-.bg-light {
-    background-color: #E0F0FF !important;
-}
-
-.display-1 {
-    font-size: 3rem;
-    font-weight: 300;
-}
-
-.lead {
-    font-size: 1.5rem;
-    font-weight: 300;
-}
-
-/*-----------------content pages-----------------*/
-
-.card {
-    border: none;
-    border-radius: 0.5rem;
-}
-
-.card-header {
-    background: none;
-    border: none;
-}
-
-.card-body {
-    padding: 0.5rem;
-}
-
-.card-title {
-    font-size: 1rem;
-}
-
-.card-text {
-    font-size: 0.875rem;
-}
-
-.card-date {
-    font-size: 0.75rem;
-    color: gray;
-}
-
-.card-img-top {
-    width: 100%;
-    height: 8rem; /* You might want to adjust this depending on your images */
-    object-fit: cover;
-}
-
-.grid {
-    padding: 1rem;
-}

@@ -3,69 +3,71 @@
 {% block title %} Inloggen {% endblock %}
 
 {% block template %}
-<!-- hero small -->
-<div class="container-fluid bg-light text-center py-5">
-    <div class="row">
-        <div class="col">
-            <h1 class="display-1">Log in</h1>
-        </div>
+   <div class="hero-body has-background-primary">
+    <div class="container has-text-centered">
+      <p class="title">
+        Inloggen
+      </p>
+      <p class="subtitle">
+        Log in om je profiel te bekijken
+      </p>
     </div>
-</div>
+  </div>
 
-<div class="container mt-5">
-    <!-- Login Section -->
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <!-- Login Form -->
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title text-center mb-4">Log in</h3>
-                    <p class="text-muted text-center mb-4">Enim tempor eget pharetra facilisis sed maecenas
-                        adipiscing...</p>
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form.non_field_errors }}
-                        <div class="mb-3 styled-input">
-                            <label for="id_username">Email</label>
-                            <input type="email" name="username" id="id_username" class="form-control" required>
-                            {% if form.username.errors %}
+
+    <div class="container mt-5">
+        <!-- Login Section -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- Login Form -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Log in</h3>
+                        <p class="text-muted text-center mb-4">Enim tempor eget pharetra facilisis sed maecenas
+                            adipiscing...</p>
+                        <form method="post">
+                            {% csrf_token %}
+                            {% if form.non_field_errors %}
                                 <div class="alert alert-danger">
-                                    {{ form.username.errors }}
+                                    {{ form.non_field_errors }}
                                 </div>
                             {% endif %}
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_password">Wachtwoord</label>
-                            <input type="password" name="password" id="id_password" class="form-control" required>
-                            {% if form.password.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.password.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100" id="btn-pri">LOG IN</button>
-                        <div class="text-center mt-3">
-                            <span>OF</span>
-                        </div>
-                        <a href="{% url 'signup' %}"><button type="button" class="btn btn-outline-secondary w-100 mt-3" id="btn-sec">WORDT LID
-                        </button> </a>
-                    </form>
+                            <div class="mb-3 styled-input">
+                                <label for="id_username">Email</label>
+                                <input type="email" name="username" id="id_username" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_password">Wachtwoord</label>
+                                <input type="password" name="password" id="id_password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="button is-primary is-rounded w-100" id="btn-pri">LOG IN</button>
+                            <div class="text-center mt-3">
+                                <span>OF</span>
+                            </div>
+                            <a href="{% url 'signup' %}">
+                                <button type="button" class="button is-outlined is-rounded w-100 mt-3">WORDT
+                                    LID
+                                </button>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 d-none d-md-block">
+                <!-- Placeholder for Right Side Image or Content -->
+                <div class="p-5">
+                    <h2 class="display-6">Molestiae rem</h2>
+                    <p class="lead">Provident cillum, autem! Cupidatat ratione eaque nascetur tempora atque alias!
+                        Incididunt adipisci. Inventore per cursus conubia, sint eaque nam, egestas? Alias ullam odio,
+                        nisi
+                        voluptatem platea, occaecat, aperiam quaerat doloremque, augue nesciunt porta cum atque tempus
+                        nisi
+                        mattis curabitur veritatis odit aliqua cursus at, praesentium convallis cum delectus, conubia
+                        error.</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 d-none d-md-block">
-            <!-- Placeholder for Right Side Image or Content -->
-            <div class="p-5">
-                <h2 class="display-6">Molestiae rem</h2>
-                <p class="lead">Provident cillum, autem! Cupidatat ratione eaque nascetur tempora atque alias!
-                    Incididunt adipisci. Inventore per cursus conubia, sint eaque nam, egestas? Alias ullam odio, nisi
-                    voluptatem platea, occaecat, aperiam quaerat doloremque, augue nesciunt porta cum atque tempus nisi
-                    mattis curabitur veritatis odit aliqua cursus at, praesentium convallis cum delectus, conubia
-                    error.</p>
-            </div>
-        </div>
     </div>
-</div>
 
 {% endblock template %}
 

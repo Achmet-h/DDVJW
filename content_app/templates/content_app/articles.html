@@ -5,49 +5,62 @@
 
 {% block template %}
 <!-- hero small -->
-<div class="container-fluid bg-light text-center py-5">
-    <div class="row">
-        <div class="col">
-            <h1 class="display-1">Artikels</h1>
-        </div>
+  <div class="hero-body has-background-primary">
+    <div class="container has-text-centered">
+      <p class="title">
+        Artikels
+      </p>
+      <p class="subtitle">
+        Hier vind je alle artikels over de verschillende onderwerpen.
+      </p>
     </div>
-</div>
+  </div>
 
 <!--search bar-->
 <div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form action="{% url 'article_search' %}" method="get">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search articles..." name="q">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <div class="input-group rounded">
+                    <input type="text" class="form-control" placeholder="Search articles..." name="q"  style="border-radius: 10px">
+                    <div class="input-group-append ml-3">
+                        <button class="button is-rounded is-primary" type="submit">Search</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
 <div class="container">
     <!-- articles.html -->
     {% if articles %}
-        <div class="row grid">
+        <div class="columns is-multiline">
             {% for article in articles %}
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-                    <a href="{% url 'article_detail' article.slug %}" class="card-link text-decoration-none link-dark">
+                <div class="column is-one-quarter-desktop is-half-tablet">
+                    <a href="{% url 'article_detail' article.slug %}" class="text-dark">
                         <div class="card">
-                            {% if article.picture %}
-                                <img class="card-img-top" src="{{ article.picture.url }}" alt="{{ article.title }}">
-                            {% else %}
-                                <!-- Load a default image if no picture is found -->
-                                <img class="card-img-top" src="{% static 'content_app/images/default-article.jpg' %}"
-                                     alt="Default image">
-                            {% endif %}
-                            <div class="card-body">
-                                <h5 class="card-title">{{ article.title }}</h5>
-                                <p class="card-text">{{ article.description|truncatewords:50|safe }}</p>
-                                <p class="card-date"> {{ article.publish|date:"d M, Y" }}</p>
+                            <div class="card-image">
+                                {% if article.picture %}
+                                    <figure class="image is-4by4">
+                                        <img src="{{ article.picture.url }}" alt="{{ article.title }}">
+                                    </figure>
+                                {% else %}
+                                    <figure class="image is-4by5">
+                                        <img src="{% static 'content_app/images/default-article.jpg' %}" alt="Default image">
+                                    </figure>
+                                {% endif %}
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-content">
+                                        <p class="title is-5">{{ article.title }}</p>
+                                        <p class="subtitle is-6">{{ article.description|truncatewords:40|safe }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <time datetime="{{ article.publish }}">{{ article.publish|date:"d M, Y" }}</time>
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -55,17 +68,16 @@
             {% endfor %}
         </div>
     {% else %}
-        {% if query %}
-            <div class="text-center">
-                <img src="{% static 'content_app/404_not_found.jpg' %}" alt="No articles found" class="img-fluid">
-                <p>Geen artiekels gevonden!</p>
-            </div>
-        {% else %}
-            <div class="text-center">
-                <p>Geen artiekels gevonden!</p>
-            </div>
-        {% endif %}
+        <div class="text-center">
+            {% if query %}
+                <figure class="image is-4by3">
+                    <img src="{% static 'content_app/404_not_found.jpg' %}" alt="No articles found">
+                </figure>
+            {% endif %}
+            <p>Geen artiekels gevonden!</p>
+        </div>
     {% endif %}
 </div>
+
 
 {% endblock template %}

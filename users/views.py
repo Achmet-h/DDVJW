@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth import logout
 from .forms import SignUpForm, LoginForm, ContactForm
+from django.contrib import messages
+from django.utils.translation import gettext as _
 
 
 def signup_view(request):
@@ -14,6 +16,7 @@ def signup_view(request):
             user.is_active = True
             user.save()
             login(request, user)
+            messages.success(request, _('Uw account is aangemaakt'))
             return redirect('login')  # Redirect to a success page or home page
     else:
         form = SignUpForm()

@@ -8,116 +8,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% bootstrap_css %}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+          rel="stylesheet">
     <link rel="stylesheet" href="{% static 'content_app/css/main.css' %}">
     <title>{% block title %} Didactiek die voor jou werkt {% endblock title %}</title>
     <link rel="icon" href="{% static 'content_app/favicon-32x32.png' %}" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
 </head>
-
 <body class="pp">
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-custom">
-    <div class="container-fluid justify-content-center">
-        <!-- make the logo -->
-        <a class="navbar-brand d-flex" href="{% url 'home' %}">
-            <img src="{% static 'content_app/Logo_DDVJW_splitted.png' %}" alt="Logo"
-                 class="d-inline-block align-text-top"
-                 id="my-image">
-            <p class="brand-text mt-3">DDVJW
-            </p>
+
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="{% url 'home' %}">
+            <img src="{% static 'content_app/Logo_DDVJW_splitted.png' %}" alt="Logo">
+            DDVJW
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" id="nav-link" href="{% url 'home' %}">Home</a>
-                </li>
-                <li class='nav-item dropdown'>
-                    <a class='nav-link dropdown-toggle' id="nav-link" href='#'
-                       role='button' data-bs-toggle='dropdown' aria-expanded='false'>
-                        Inspiratie
-                    </a>
-                    <ul class='dropdown-menu' aria-labelledby='navbarDropdown'>
-                        {% if user.is_authenticated %}
-                            <li><a class='dropdown-item' id='nav-link-item' href='#'>Blog
-                                (Premium)</a></li>
-                            <li><a class='dropdown-item' id='nav-link-item' href='{% url 'premium_articles_view' %}'>Artikels
-                                (Premium)</a></li>
-                            <li><a class='dropdown-item' id='nav-link-item' href='#'>Podcast (Premium)</a></li>
-                        {% else %}
-                            <li><a class='dropdown-item' id='nav-link-item' href='{% url 'blog_view' %}'>Blog</a></li>
-                            <li><a class='dropdown-item' id='nav-link-item'
-                                   href='{% url 'articles_view' %}'>Artikels</a></li>
-                            <li><a class='dropdown-item' id='nav-link-item' href='#'>Podcast</a></li>
 
-                        {% endif %}
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="nav-link" href="{% url 'FAQ' %}">FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="nav-link" href="{% url 'contact' %}">Contact</a>
-                </li>
-            </ul>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+           data-target="navbarBasicExample" id="burger">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
 
-            {% if user.is_authenticated %}
-                <!-- User is logged in -->
-                <div class="navbar-text d-flex m-2">
-                    <h4 class="m-2">Welkom {{ user.first_name }}!</h4>
-                    <h4 class="m-2"><a href="#"><i class="bi bi-person-circle"></i></a></h4>
+    <div id="nav-links" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="{% url 'home' %}">
+                Home
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    Inspiratie
+                </a>
+
+                <div class="navbar-dropdown">
+                    {% if user.is_authenticated %}
+                        <a class="navbar-item" href="#">Blog (Premium)</a>
+                        <a class="navbar-item" href="{% url 'premium_articles_view' %}">Artikels (Premium)</a>
+                        <a class="navbar-item" href="#">Podcast (Premium)</a>
+                    {% else %}
+                        <a class="navbar-item" href="{% url 'blog_view' %}">Blog</a>
+                        <a class="navbar-item" href="{% url 'articles_view' %}">Artikels</a>
+                        <a class="navbar-item" href="#">Podcast</a>
+                    {% endif %}
                 </div>
-                <form class="d-flex p-3 m-0">
-                    <a href="{% url 'logout' %}" class="btn btn-outline-secondary" id="btn-sec">Uitloggen</a>
-                </form>
-            {% else %}
-                <!-- User is not logged in -->
-                <form class="d-flex">
-                    <a href="{% url 'login' %}" class="btn me-2" id="btn-pri">Inloggen</a>
-                    <a href="{% url 'signup' %}" class="btn btn-outline-secondary" id="btn-sec">Lid worden</a>
-                </form>
-            {% endif %}
+            </div>
+
+            <a class="navbar-item" href="{% url 'FAQ' %}">
+                FAQ
+            </a>
+            <a class="navbar-item" href="{% url 'contact' %}">
+                Contact
+            </a>
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    {% if user.is_authenticated %}
+                        <span class="navbar-item">Welkom {{ user.first_name }}!</span>
+                        <i class="bi bi-person-circle pr-4"></i>
+                        <a href="{% url 'logout' %}" class="button is-primary is-rounded">Uitloggen</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="button is-primary">Inloggen</a>
+                        <a href="{% url 'signup' %}" class="button is-light">Lid worden</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 </nav>
+
 
 <!-- Content -->
 {% block template %}
 
 {% endblock template %}
 <!-- footer -->
-<div class="footer">
+<div class="footer mt-5">
     <div class="container">
         <div class="row">
             <!-- First Column -->
             <div class="col-md-4">
-                <h4>Onderwijsbureau van Leeuwen</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare cursus sed nunc eget dictum. Sed
-                    ornare cursus sed nunc eget dictum.</p>
+                <h4><strong>Onderwijsbureau van Leeuwen</strong></h4>
+                <p>Onderwijsbureau Van Leeuwen B.V. is specialist in schoolontwikkeling en het trainen en coachen van
+                    docenten. Ook voor het verzorgen van studiedagen, het geven van onderwijsadvies en een uniek
+                    coachingpakket voor docenten om PrO en VSO leerlingen doelgericht te coachen, bent u bij ons aan het
+                    juiste adres!
+                </p>
             </div>
             <!-- Second Column -->
             <div class="col-md-4" id="sec-col">
-                <h4>Contact</h4>
+                <h4><strong>Contact</strong></h4>
                 <ul class="footer-links">
-                    <li>[adres]</li>
-                    <li>[postcode]</li>
-                    <li>[stad]</li>
-                    <li>[telefoonnummer]</li>
+                    <li>Anne Wadmanwei 4</li>
+                    <li>8914 BD</li>
+                    <li>Leeuwarden</li>
+                    <li>06 25 222 765</li>
                 </ul>
             </div>
             <!-- Third Column -->
             <div class="col-md-4" id="third-col">
-                <h4>DDVJW</h4>
+                <h4><strong>DDVJW</strong></h4>
                 <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Artiekelen</a></li>
-                    <li><a href="#">Podcast</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><i class="bi bi-house-fill"></i><a href="#">Home</a></li>
+                    <li><i class="bi bi-chat-square-text-fill"></i><a href="#">Blog</a></li>
+                    <li><i class="bi bi-file-text-fill"></i><a href="#">Artiekelen</a></li>
+                    <li><i class="bi bi-broadcast-pin"></i><a href="#">Podcast</a></li>
+                    <li><i class="bi bi-envelope-fill"></i><a href="#">Contact</a></li>
+                    <li><i class="bi bi-patch-question-fill"></i><a href="#">FAQ</a></li>
                 </ul>
             </div>
         </div>
@@ -127,11 +130,25 @@
                 <p>Onderwijsbureauvanleeuwen 2023, All rights reserved.</p>
             </div>
         </div>
+        <div class="row social-links">
+            <div class="col-12 text-center mt-5">
+                <a href="https://www.facebook.com/onderwijsbureauvanleeuwen" target="_blank"><i
+                        class="bi bi-facebook"></i></a>
+                <a href="https://www.linkedin.com/company/onderwijsbureau-van-leeuwen/" target="_blank"><i
+                        class="bi bi-linkedin"></i></a>
+                <a href="https://www.instagram.com/onderwijsbureauvanleeuwen/" target="_blank"><i
+                        class="bi bi-instagram"></i></a>
+            </div>
+        </div>
     </div>
+{#    <div class="row">#}
+{#        <a href="https://www.ontwerpbureauleeuw.nl/" target="_blank"><img src="{% static 'content_app/Logo_DDVJW_splitted.png' %}"#}
+{#                                                                          alt="Logo OBL"></a>#}
+{#    </div>#}
 </div>
 
 
-
+<script src="{% static 'content_app/css/main.js' %}"></script>
 {% bootstrap_javascript %}
 </body>
 </html>

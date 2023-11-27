@@ -4,23 +4,26 @@
 
 {% block template %}
 <!-- hero small -->
-<div class="container-fluid bg-light text-center py-5">
-    <div class="row">
-        <div class="col">
-            <h1 class="display-1">Blog</h1>
-        </div>
+  <div class="hero-body has-background-primary">
+    <div class="container has-text-centered">
+      <p class="title">
+        Blogs
+      </p>
+      <p class="subtitle">
+      Hier vind je laatste nieuws en blogs van Didactiek team
+      </p>
     </div>
-</div>
+  </div>
 
 <!--search bar-->
 <div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form action="{% url 'blog_search' %}" method="get">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search articles..." name="q">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <div class="input-group rounded">
+                    <input type="text" class="form-control" placeholder="Search articles..." name="q"  style="border-radius: 10px">
+                    <div class="input-group-append ml-3">
+                        <button class="button is-rounded is-primary" type="submit">Search</button>
                     </div>
                 </div>
             </form>
@@ -29,22 +32,35 @@
 </div>
 
 <div class="container">
+    <!-- articles.html -->
     {% if blogs %}
-        <div class="row grid">
+        <div class="columns is-multiline">
             {% for blog in blogs %}
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
-                    <a href="{% url 'blog_detail' blog.slug %}" class="card-link text-decoration-none link-dark">
+                <div class="column is-one-quarter-desktop is-half-tablet">
+                    <a href="{% url 'article_detail' blog.slug %}" class="text-dark">
                         <div class="card">
-                            {% if blog.picture %}
-                                <img class="card-img-top" src="{{ blog.picture.url }}" alt="{{ blog.title }}">
-                            {% else %}
-=                                <img class="card-img-top" src="{% static 'content_app/images/default-article.jpg' %}"
-                                     alt="Default image">
-                            {% endif %}
-                            <div class="card-body">
-                                <h5 class="card-title">{{ blog.title }}</h5>
-                                <p class="card-text">{{ blog.description|truncatewords:50 }}</p>
-                                <p class="card-date">{{ blog.publish|date:"d M, Y" }}</p>
+                            <div class="card-image">
+                                {% if blog.picture %}
+                                    <figure class="image is-4by4">
+                                        <img src="{{ blog.picture.url }}" alt="{{ blog.title }}">
+                                    </figure>
+                                {% else %}
+                                    <figure class="image is-4by4">
+                                        <img src="{% static 'content_app/images/default-article.jpg' %}" alt="Default image">
+                                    </figure>
+                                {% endif %}
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-content">
+                                        <p class="title is-5">{{ blog.title }}</p>
+                                        <p class="subtitle is-6">{{ blog.description|truncatewords:40|safe }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <time datetime="{{ blog.publish }}">{{ blog.publish|date:"d M, Y" }}</time>
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -52,16 +68,14 @@
             {% endfor %}
         </div>
     {% else %}
-        {% if query %}
-            <div class="text-center">
-                <img src="{% static 'content_app/404_not_found.jpg' %}" alt="No articles found" class="img-fluid">
-                <p>Geen blogs gevonden!</p>
-            </div>
-        {% else %}
-            <div class="text-center">
-                <p>Geen blogs gevonden!</p>
-            </div>
-        {% endif %}
+        <div class="text-center">
+            {% if query %}
+                <figure class="image is-4by3">
+                    <img src="{% static 'content_app/404_not_found.jpg' %}" alt="No articles found">
+                </figure>
+            {% endif %}
+            <p>Geen blogs gevonden!</p>
+        </div>
     {% endif %}
 </div>
 {% endblock %}
