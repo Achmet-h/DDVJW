@@ -1,10 +1,14 @@
+.pp{
+        font-family: 'Open Sans', sans-serif;
+}
+
 /*header ------------------------------*/
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background-color: #f7f7f7;
+    background-color: #6f6fc3;
 }
 
 .header-left {
@@ -53,133 +57,155 @@
     height: auto; /* This maintains the aspect ratio of the image. */
 }
 
-/*info containers---------------------- */
-#info-container-1 {
+/* roadmap-----------------------------*/
+.circle {
+  padding: 13px 20px;
+  border-radius: 50%;
+  background-color: #6FBEC3;
+  color: #fff;
+  max-height: 50px;
+  z-index: 2;
+}
+
+.hit.row .col-2 {
+  align-self: stretch;
+}
+.hit.row .col-2::after {
+  content: "";
+  position: absolute;
+  border-left: 3px solid #6FBEC3;
+  z-index: 1;
+}
+.hit.row .col-2.bottom::after {
+  height: 50%;
+  left: 50%;
+  top: 50%;
+}
+.hit.row .col-2.full::after {
+  height: 100%;
+  left: calc(50% - 3px);
+}
+.hit.row .col-2.top::after {
+  height: 50%;
+  left: 50%;
+  top: 0;
+}
+
+
+.timeline div {
+  padding: 0;
+  height: 40px;
+}
+.timeline hr {
+  border-top: 3px solid #6FBEC3;
+  margin: 0;
+  top: 17px;
+  position: relative;
+}
+.timeline .col-2 {
+  display: flex;
+  overflow: hidden;
+}
+.timeline .corner {
+  border: 3px solid #6FBEC3;
+  width: 100%;
+  position: relative;
+  border-radius: 15px;
+}
+.timeline .top-right {
+  left: 50%;
+  top: -50%;
+}
+.timeline .left-bottom {
+  left: -50%;
+  top: calc(50% - 3px);
+}
+.timeline .top-left {
+  left: -50%;
+  top: -50%;
+}
+.timeline .right-bottom {
+  left: 50%;
+  top: calc(50% - 3px);
+}
+
+
+
+/*FAQ container---------------------*/
+#faq-container {
     background-color: #6FBEC3;
     padding: 50px;
     border-radius: 5px;
 }
-
-#info-container-2 {
-    background-color: white;
+.accordion .accordion-item {
+    background: none;
+    border: none;
 }
 
-/* Unique IDs for styling text in info-container-2 */
-#h1-info-2 {
-    color: black;
-    font-size: 3rem; /* Assuming you want to keep the size the same as #h1-info-1 */
+.accordion .accordion-header {
+    background: none;
+    padding: .4rem 1rem;
 }
 
-#p-info-2 {
-    color: black;
-    font-size: 1.2rem; /* Assuming you want to keep the size the same as #p-info-1 */
+.accordion .accordion-header .accordion-button {
+    color: #2f2f31;
+    text-align: left;
+    font-weight: 500;
 }
 
-/* Media query for responsive design */
-@media (max-width: 768px) {
-    #info-container-1 .col-lg-5,
-    #info-container-2 .col-lg-5 {
-        width: 100%;
-    }
+.accordion .accordion-header .accordion-button:not(.collapsed) {
+    color: #ff8300;
 }
 
-/* Styles for unique text IDs in info-container-1 */
-#h1-info-1 {
-    font-size: 3rem;
-    color: white;
+.accordion .accordion-body {
+    color: #324353;
+    padding: 0.5rem 3rem;
 }
 
-#p-info-1 {
-    font-size: 1.2rem;
-    color: white;
+.page-title {
+    font-family:  ;
+    font-size: 1rem;
+    font-weight: 900;
+    margin-bottom: 1rem; /* Adjust space below the title */
+    padding-bottom: 10px; /* Space between title text and line */
+    border-bottom: 3px solid #6FBEC3; /* Thick colored line below the title */
+    display: inline-block; /* Makes the border line only as long as the text */
 }
 
-#btn-info {
-    color: #0E428B;
-    border-color: #0E428B;
-}
-
-#btn-info:hover {
-    background-color: #0E428B;
-    color: white; /* Make text color white when button is hovered */
-}
-
-#info-img {
-    width: 400px;
-    height: 400px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-left: 160px;
-}
-
-/*Info block 3 ---------------------*/
-
-
-/*FAQ container---------------------*/
-
-
-#faq-container-in-separate-page {
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-    border-radius: 10px;
-}
-#faq-container {
-    background-color: #6FBEC3;
-    padding: 50px;
-    border-radius: 10px;
-}
-#faq-container h2, #faq-container p {
-    color: #333333; /* This sets the text color to a dark grey */
-}
-.accordion-button {
-    background-color: #FFFFFF; /* This sets the accordion button background color to white */
-    color: black; /* This sets the accordion button text color to dark grey */
-    border-color: black; /* This is Bootstrap's default border color for buttons, which looks like the one in the screenshot */
-}
-.accordion-button:not(.collapsed) {
-    background-color: #E9ECEF; /* A slightly darker shade for the active accordion button */
-    color: #333333;
-}
-
-.accordion-button:focus {
-    box-shadow: none; /* Removes the focus outline for a cleaner look, if desired */
-}
-#btn-sec {
-    color: #333333; /* Sets the button text color to dark grey */
-    border-color: #333333; /* Assuming you want to keep this color for the button border as in your original CSS */
-}
-/* This ensures that the color is darker for the collapsed button text and lighter when expanded */
-.accordion-button.collapsed {
-    color: black;
-}
 
 /*footer -------------*/
 .footer {
-    background-color: #f7f7f7;
+    background-color: #6f6fc3 !important;
     padding: 40px 0;
 }
 
 .footer h4, .footer p {
     margin-bottom: 20px;
+    color: white !important;
+}
+.footer h4 strong {
+    color: white !important;
 }
 
 .footer-links {
     list-style-type: none;
     padding: 0;
+    color: white;
 }
 
 .footer-links li a {
+    color: white;
     margin-bottom: 10px;
     padding: 0 10px;
     text-decoration: none;
-    color: black;
 }
-.footer-links li i  {
+
+.footer-links li i {
     color: #6FBEC3;
 }
+
 .social-links a {
-    color: #6FBEC3;
+    color: white;
 }
 
 .footer-links li a:hover {
