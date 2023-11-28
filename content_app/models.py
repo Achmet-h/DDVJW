@@ -33,7 +33,7 @@ class Category(models.TextChoices):
 class FAQ(models.Model):
     category = models.CharField(max_length=254, choices=Category.choices)
     question = models.CharField(max_length=250)
-    answer = models.TextField()
+    answer = RichTextField()
 
     def __str__(self):
         return self.question

@@ -1,7 +1,17 @@
 .pp{
         font-family: 'Open Sans', sans-serif;
 }
+.navbar-logo {
+    max-width: 50px; /* Adjust this value as needed */
+    height: auto;
+}
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-logo {
+        max-width: 50px; /* Smaller size on smaller screens */
+    }
+}
 /*header ------------------------------*/
 .header-container {
     display: flex;
@@ -163,7 +173,6 @@
 }
 
 .page-title {
-    font-family:  ;
     font-size: 1rem;
     font-weight: 900;
     margin-bottom: 1rem; /* Adjust space below the title */
