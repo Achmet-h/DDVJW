@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %} Contact ons {% endblock %}
+
+{% block template %}
+    <!-- hero small -->
+    <div class="hero-body custom-hero-body">
+        <div class="container has-text-centered">
+            <p class="title">
+                Beluister de podcast van DDVJW
+            </p>
+            <p class="subtitle">
+                De podcast over Didactiek die voor jou werkt
+            </p>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <figure class="image is-3by3">
+            <img src="{% static 'content_app/comingsoon.png' %}" alt="coming soon">
+        </figure>
+    </div>
+
+
+{% endblock template %}

@@ -35,12 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const burgerIcon = document.querySelector('#burger');
-    const navbarMenu = document.querySelector('#nav-links');
-    burgerIcon.addEventListener('click', () => {
-        navbarMenu.classList.toggle('is-active');
-    });
-
     document.querySelectorAll('.faq-card .card-header').forEach((item) => {
         item.addEventListener('click', () => {
             const content = item.nextElementSibling;
@@ -48,8 +42,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
+    //todo
+    window.addEventListener('scroll', function () {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    window.onload = function () {
+        setTimeout(function () {
+            document.getElementById('loading').style.display = 'none';
+        }, 1000);
+    };
 
 
 });
+
+
 

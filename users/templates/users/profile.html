@@ -1,0 +1,66 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %} Mijn Profiel {% endblock %}
+
+{% block template %}
+
+    <div class="hero-body has-background-primary">
+        <div class="container has-text-centered">
+            <p class="title">
+                Mijn Profiel
+            </p>
+            <p class="subtitle">
+            </p>
+        </div>
+    </div>
+    <div class="container my-profile-page mt-5">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <i class="bi bi-person-circle" style="font-size: 100px;"></i>
+                <h3>{{ user.get_full_name }}</h3>
+                <p class="text-muted">{{ user.email }}</p>
+                <!-- Additional User Info -->
+                <p>{{ user.profile.bio }}</p>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Mijn gegevens</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Voornaam:</strong>
+                                <p>{{ user.first_name }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Achternaam:</strong>
+                                <p>{{ user.last_name }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Emailadres:</strong>
+                                <p>{{ user.email }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Telefoonnummer:</strong>
+                                <p>{{ user.telephone }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>School naam:</strong>
+                                <p>{{ user.school_name }}</p>
+                            </div>
+                            <!-- Add more fields as necessary -->
+                        </div>
+
+                        <!-- Edit Profile Button -->
+                        <a href="{% url 'update_profile' %}" class="btn button is-primary is-rounded">Profiel bewerken</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock template %}

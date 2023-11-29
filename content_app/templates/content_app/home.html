@@ -38,7 +38,7 @@
                     <div class="circle font-weight-bold">1</div>
                 </div>
                 <div class="col-6">
-                    <h5>Oriënteren</h5>
+                    <h5><strong>Oriënteren</strong></h5>
                     <p>De bedoeling van de les wordt concreet en beeldend gemaakt voor de leerlingen. Leerlingen denken
                         na over het voorbeeld door vragen te beantwoorden als: ‘Wat ga je maken?’, ‘Waar was je precies
                         mee bezig?’, ‘Wat heb je daarvoor nodig?’, ‘Wat wil je bereiken?’, ‘Hoe ziet je eindresultaat er
@@ -61,8 +61,8 @@
             <!--second section-->
             <div class="row align-items-center justify-content-end hiw d-flex">
                 <div class="col-6 text-right">
-                    <h5>Instrueren</h5>
-                    <p>Het leerdoel wordt besproken door leerlingen een strategie te laten verwoorden van de
+                    <h5><strong>Instrueren</strong></h5>
+                    <p style="text-align: left">Het leerdoel wordt besproken door leerlingen een strategie te laten verwoorden van de
                         verschillende stappen die zij moeten zetten om het doel te realiseren. De leerlingen worden
                         gericht interactief en strategisch geïnstrueerd over hun leerproces, hun zelfregulatie en de
                         bijdrage aan hun eigen ontwikkeling. Leerlingen maken eigen gedachten zichtbaar door ‘het
@@ -91,7 +91,7 @@
                     <div class="circle font-weight-bold">3</div>
                 </div>
                 <div class="col-6">
-                    <h5>Oefenen en differentiëren</h5>
+                    <h5><strong>Oefenen en differentiëren</strong></h5>
                     <p>Leerlingen oefenen onder begeleiding met het uitvoeren van belangrijke/complexe deeltaken van het
                         werkstuk/de opdracht. Leerlingen krijgen directe feedback op het oefenen en worden interactief
                         geïnstrueerd in wat nog beter kan. Sterkere leerlingen krijgen meer of extra
@@ -113,8 +113,8 @@
             <!--second section-->
             <div class="row align-items-center justify-content-end hiw d-flex">
                 <div class="col-6 text-right">
-                    <h5>Zelfstandig werken</h5>
-                    <p>Leerlingen krijgen ondersteuning door verwijzingen naar strategieën of plannen en werken
+                    <h5><strong>Zelfstandig werken</strong></h5>
+                    <p style="text-align: left">Leerlingen krijgen ondersteuning door verwijzingen naar strategieën of plannen en werken
                         zelfstandig zonder ongevraagde hulp. Ze ontvangen taakgerichte complimenten en feedback op hun
                         leerproces, verwoorden hun vorderingen en reflecteren op hun strategieën en persoonlijke groei.
                         Zwakkere leerlingen krijgen extra aandacht voor efficiënte technieken, terwijl sterkere
@@ -143,7 +143,7 @@
                     <div class="circle font-weight-bold">5</div>
                 </div>
                 <div class="col-6">
-                    <h5>Evalueren</h5>
+                    <h5><strong>Evalueren</strong></h5>
                     <p>Samen met de alle leerlingen wordt (individueel) teruggekeken op het leerdoel en het leerproces.
                         Leerlingen verwoorden wat moeilijk en gemakkelijk was. Leerlingen verwoorden hoe zij om zijn
                         gegaan met dat wat moeilijk was (zelfregulatie). Leerlingen evalueren interactief (in
@@ -186,7 +186,7 @@
             </div>
             <div class="row m-4">
                 <div class="col text-center">
-                    <a href="{% url 'articles_view' %}" class="button is-primary is-rounded ">Alle
+                    <a href="{% url 'articles_view' %}" class="btn button is-primary is-rounded ">Alle
                         artikels</a>
                 </div>
             </div>
@@ -221,7 +221,7 @@
             </div>
             <div class="row m-4">
                 <div class="col text-center">
-                    <a href="{% url 'blog_view' %}" class="button is-primary is-rounded">Alle blogs</a>
+                    <a href="{% url 'blog_view' %}" class="btn button is-primary is-rounded">Alle blogs</a>
                 </div>
             </div>
         </div>
@@ -236,7 +236,7 @@
                 <p class="mb-4 lead" id="p-info-1">Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Nullam nec dapibus nisi.
                     Sed fermentum purus ac tempor vulputate.</p>
-                <a href="#" class="btn btn-primary btn-lg rounded-pill" role="button">Learn More →</a>
+                    <a href="#" class="btn button is-rounded" id="lid-button">Lees meer!</a>
             </div>
             <!-- Image Section -->
             <div class="col-lg-5 mt-5">
@@ -258,11 +258,11 @@
             </div>
             <!-- Text Section -->
             <div class="col-lg-5 mt-5">
-                <h1 class="mb-4 display-4" id="h1-info-1">Ons podcast luisteren</h1>
+                <h1 class="mb-4 display-4" id="h1-info-1">Onze podcast luisteren</h1>
                 <p class="mb-4 lead" id="p-info-1">Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Nullam nec dapibus nisi.
                     Sed fermentum purus ac tempor vulputate.</p>
-                <a href="#" class="btn btn-primary btn-lg rounded-pill" role="button">Learn More →</a>
+                    <a href="" class="btn button is-rounded" id="lid-button">Lees meer!</a>
             </div>
         </div>
     </div>
@@ -321,6 +321,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{% url 'FAQ' %}" class="btn button is-primary btn-lg rounded-pill" role="button">FAQ's</a>
         </div>
     </div>
 

@@ -21,13 +21,14 @@
 </head>
 <body class="pp">
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation" aria-label="main navigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" role="navigation" aria-label="main navigation">
     <div class="container-fluid">
         <a class="navbar-brand mt-2" href="{% url 'home' %}">
             <img src="{% static 'content_app/Logo_DDVJW_splitted.png' %}" alt="Logo" class="navbar-logo">
             DDVJW
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -35,22 +36,18 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link text-decoration-none">
                         Inspiratie
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        {% if user.is_authenticated %}
-                            <li><a class="dropdown-item" href="#">Blog (Premium)</a></li>
-                            <li><a class="dropdown-item" href="{% url 'premium_articles_view' %}">Artikels (Premium)</a></li>
-                            <li><a class="dropdown-item" href="#">Podcast (Premium)</a></li>
-                        {% else %}
-                            <li><a class="dropdown-item" href="{% url 'blog_view' %}">Blog</a></li>
-                            <li><a class="dropdown-item" href="{% url 'articles_view' %}">Artikels</a></li>
-                            <li><a class="dropdown-item" href="#">Podcast</a></li>
-                        {% endif %}
-                    </ul>
-                </li>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item text-decoration-none" href="{% url 'blog_view' %}">Blog</a>
+                        <a class="navbar-item text-decoration-none" href="{% url 'articles_view' %}">Artikels</a>
+                        <a class="navbar-item text-decoration-none" href="{% url 'podcast' %}">Podcast</a>
+                    </div>
+                </div>
+
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'FAQ' %}">FAQ</a>
                 </li>
@@ -60,18 +57,31 @@
             </ul>
             <div class="d-flex">
                 {% if user.is_authenticated %}
-                    <span class="navbar-text">Welkom {{ user.first_name }}!</span>
-                    <i class="bi bi-person-circle pr-4 m-1 p-2"></i>
-                    <a href="{% url 'logout' %}" class="button is-primary is-rounded">Uitloggen</a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a href="#" class="navbar-link text-decoration-none">
+                            <i class="bi bi-person-circle pr-2 m-1 p-2" style="font-size: 24px"></i> Account instellingen
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a href="{% url 'profile' %}" class="navbar-item text-decoration-none">Profiel</a>
+                            <hr class="navbar-divider">
+                            <a href="{% url 'update_profile' %}" class="navbar-item text-decoration-none">Persoonlijke gegevens aanpassen</a>
+                            <hr class="navbar-divider">
+                            <a href="{% url 'logout' %}" class="navbar-item text-decoration-none">Uitloggen</a>
+                        </div>
+                    </div>
+
                 {% else %}
-                    <a href="{% url 'login' %}" class="button is-primary">Inloggen</a>
-                    <a href="{% url 'signup' %}" class="button is-light">Lid worden</a>
+                    <a href="{% url 'login' %}" class="btn button is-primary is-rounded mr-3">Inloggen</a>
+                    <a href="{% url 'signup' %}" class="btn button is-rounded" id="lid-button">Lid worden</a>
                 {% endif %}
             </div>
         </div>
     </div>
 </nav>
 
+<div class="position-relative d-flex justify-content-center">
+    <div class="loader-line" id="loading"></div>
+</div>
 
 
 <!-- Content -->
@@ -105,18 +115,18 @@
             <div class="col-md-4" id="third-col">
                 <h4><strong>DDVJW</strong></h4>
                 <ul class="footer-links">
-                    <li><i class="bi bi-house-fill"></i><a href="#">Home</a></li>
-                    <li><i class="bi bi-chat-square-text-fill"></i><a href="#">Blog</a></li>
-                    <li><i class="bi bi-file-text-fill"></i><a href="#">Artiekelen</a></li>
+                    <li><i class="bi bi-house-fill"></i><a href="{% url 'home' %}">Home</a></li>
+                    <li><i class="bi bi-chat-square-text-fill"></i><a href="{% url 'blog_view' %}">Blog</a></li>
+                    <li><i class="bi bi-file-text-fill"></i><a href="{% url 'articles_view' %}">Artiekelen</a></li>
                     <li><i class="bi bi-broadcast-pin"></i><a href="#">Podcast</a></li>
-                    <li><i class="bi bi-envelope-fill"></i><a href="#">Contact</a></li>
-                    <li><i class="bi bi-patch-question-fill"></i><a href="#">FAQ</a></li>
+                    <li><i class="bi bi-envelope-fill"></i><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><i class="bi bi-question-lg"></i><a href="{% url 'FAQ' %}">FAQ</a></li>
                 </ul>
             </div>
         </div>
         <!-- Footer Bottom Text -->
         <div class="row">
-            <div class="col-12 text-center mt-5">
+            <div class="col-12 text-center mt-1">
                 <p>Onderwijsbureauvanleeuwen 2023, All rights reserved.</p>
             </div>
         </div>

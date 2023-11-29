@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseForbidden
 from .models import FAQ, Content, ContentType
 from collections import defaultdict
-from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 def home(request):
-    articles = Content.objects.filter(contentType=ContentType.article).order_by('-publish')[:4]
-    blogs = Content.objects.filter(contentType=ContentType.blog).order_by('-publish')[:4]
+    articles = Content.objects.filter(contentType=ContentType.article, isPremium=False).order_by('-publish')[:4]
+    blogs = Content.objects.filter(contentType=ContentType.blog, isPremium=False).order_by('-publish')[:4]
     return render(request, 'home.html', {'articles': articles, 'blogs': blogs})
 
 
@@ -20,55 +20,68 @@ def faq_view(request):
 
 
 def articles_view(request):
-    articles = Content.objects.filter(contentType=ContentType.article).order_by('-publish')
+    if request.user.is_authenticated:
+        articles = Content.objects.filter(contentType=ContentType.article).order_by('-publish')
+    else:
+        articles = Content.objects.filter(contentType=ContentType.article, isPremium=False).order_by('-publish')
+
     return render(request, 'articles.html', {'articles': articles})
 
 
 def articles_search(request):
     query = request.GET.get('q', '')
-    if query:
-        articles = Content.objects.filter(
-            title__icontains=query,
-            contentType=ContentType.article
-        )
+    base_query = Content.objects.filter(title__icontains=query, contentType=ContentType.article)
+
+    if request.user.is_authenticated:
+        articles = base_query
     else:
-        # If no query, return all articles
-        articles = Content.objects.filter(contentType=ContentType.article)
+        articles = base_query.filter(isPremium=False)
 
     return render(request, 'articles.html', {'articles': articles, 'query': query})
 
 
 def articles_detail(request, slug):
-    article = get_object_or_404(Content, slug=slug)
+    article = get_object_or_404(Content, slug=slug, contentType=ContentType.article)
+
+    # Check if the article is premium and the user is not authenticated
+    if article.isPremium and not request.user.is_authenticated:
+        # redirect to login page
+        return HttpResponseForbidden("This is premium content. Please login to access.")
+
     return render(request, 'article_detail.html', {'article': article})
 
 
 def blog_view(request):
-    blogs = Content.objects.filter(contentType=ContentType.blog).order_by('-publish')
+    if request.user.is_authenticated:
+        blogs = Content.objects.filter(contentType=ContentType.blog).order_by('-publish')
+    else:
+        blogs = Content.objects.filter(contentType=ContentType.blog, isPremium=False).order_by('-publish')
+
     return render(request, 'blog.html', {'blogs': blogs})
 
 
 def blog_detail(request, slug):
     blog = get_object_or_404(Content, slug=slug, contentType=ContentType.blog)
+
+    # Check if the blog is premium and the user is not authenticated
+    if blog.isPremium and not request.user.is_authenticated:
+        # redirect to login page
+        return HttpResponseForbidden("This is premium content. Please login to access.")
+
     return render(request, 'blog_detail.html', {'blog': blog})
 
 
 def blog_search(request):
     query = request.GET.get('q', '')
-    if query:
-        blogs = Content.objects.filter(
-            title__icontains=query,
-            contentType=ContentType.blog
-        )
+    base_query = Content.objects.filter(title__icontains=query, contentType=ContentType.blog)
+
+    if request.user.is_authenticated:
+        blogs = base_query
     else:
-        blogs = Content.objects.filter(contentType=ContentType.blog)
+        blogs = base_query.filter(isPremium=False)
 
     return render(request, 'blog.html', {'blogs': blogs, 'query': query})
 
 
-@login_required
-def premium_articles_view(request):
-    premium_contents = Content.objects.filter(isPremium=True, ContentType='article')
-    return render(request, 'premium_articles.html', {'premium_contents': premium_contents})
-
-
+def podcast_view(request):
+    return render(request, 'podcast.html')

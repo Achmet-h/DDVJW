@@ -2,7 +2,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth import logout
-from .forms import SignUpForm, LoginForm, ContactForm
+from .forms import SignUpForm, LoginForm, ContactForm, UserUpdateForm
 from django.contrib import messages
 from django.utils.translation import gettext as _
 
@@ -63,3 +63,22 @@ def contact_view(request):
     else:
         form = ContactForm()
     return render(request, 'content_app/contact.html', {'form': form})
+
+
+def update_profile(request):
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile has been updated!')
+            return redirect('profile')
+
+    else:
+        form = UserUpdateForm(instance=request.user)
+
+    return render(request, 'users/update_profile.html', {'form': form})
+
+
+def profile_view(request):
+    return render(request, 'users/profile.html')

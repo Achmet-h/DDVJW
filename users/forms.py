@@ -95,3 +95,9 @@ class ContactForm(forms.Form):
     telephone = forms.CharField(label='Telefoonnummer', max_length=15)
     email = forms.EmailField(label='Emailadres')
     message = forms.CharField(label='Vraag of opmerking', widget=forms.Textarea, max_length=500)
+
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email', 'first_name', 'last_name', 'telephone', 'school_name']

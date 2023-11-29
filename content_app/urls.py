@@ -16,13 +16,14 @@ urlpatterns = [
     path('blog/', views.blog_view, name='blog_view'),
     path('blog/<slug:slug>/', views.blog_detail, name='blog_detail'),
     path('zoek-blog/', views.blog_search, name='blog_search'),
-    # premium content views
-    path('premium-artiekls/', views.premium_articles_view, name='premium_articles_view'),
     # FAQ view
     path('faq/', views.faq_view, name='FAQ'),
 
     # contact view
     path('contact/', users.views.contact_view, name='contact'),
+
+    #podcast view
+    path('podcast/', views.podcast_view, name='podcast')
 ]
 
 # this is needed during the development only
