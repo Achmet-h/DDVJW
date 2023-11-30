@@ -1,11 +1,11 @@
 {% extends "base/base.html" %}
 {% load static %}
-{% block title %} Artikels {% endblock %}
+{% block title %}DDVJW - Artikels {% endblock %}
 
 
 {% block template %}
 <!-- hero small -->
-  <div class="hero-body has-background-primary">
+  <div class="hero-body custom-hero-body">
     <div class="container has-text-centered">
       <p class="title">
         Artikels
@@ -71,7 +71,7 @@
         <div class="text-center">
             {% if query %}
                 <figure class="image is-4by3">
-                    <img src="{% static 'content_app/404_not_found.jpg' %}" alt="No articles found">
+                    <img src="{% static 'content_app/images/404_not_found.jpg' %}" alt="No articles found">
                 </figure>
             {% endif %}
             <p>Geen artiekels gevonden!</p>

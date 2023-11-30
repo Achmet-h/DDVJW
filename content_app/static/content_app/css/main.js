@@ -42,19 +42,31 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    //todo
-    window.addEventListener('scroll', function () {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    //todo fix the navbar while scrolling
+    const navbar = document.querySelector('.navv');
+
+    const handleScroll = () => {
+        const shouldBeScrolled = window.scrollY > 50;
+        navbar.classList.toggle('scrolled', shouldBeScrolled);
+    };
+
+    if (navbar) {
+        const debounce = (func, delay) => {
+            let debounceTimer;
+            return function () {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => func.apply(this, arguments), delay);
+            };
+        };
+
+        window.addEventListener('scroll', debounce(handleScroll, 10));
+    }
+
+
     window.onload = function () {
         setTimeout(function () {
             document.getElementById('loading').style.display = 'none';
-        }, 1000);
+        }, 500);
     };
 
 

@@ -5,9 +5,8 @@ import users.views
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('home/', views.home, name='home'),
-
+    path('', views.homepage_view, name='home'),
+    path('home/', views.homepage_view, name='home'),
     # article views
     path('artikels/', views.articles_view, name='articles_view'),
     path('artikels/<slug:slug>/', views.articles_detail, name='article_detail'),

@@ -1,20 +1,19 @@
 {% extends "base/base.html" %}
 {% load static %}
-{% block title %} Contact ons {% endblock %}
+{% block title %}DDVJW - Contact ons {% endblock %}
 
 {% block template %}
     <!-- hero small -->
     <div class="hero-body has-background-primary">
         <div class="container has-text-centered">
-            <p class="title">
+            <p class="title text-left">
                 Contact ons
             </p>
-            <p class="subtitle">
+            <p class="subtitle text-left">
                 Contacteer ons voor meer informatie
             </p>
         </div>
     </div>
-
     <div class="container mt-5">
         <!-- contact Section -->
         <div class="row justify-content-center">
@@ -22,9 +21,10 @@
                 <!-- Contact Form -->
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title text-center mb-4">Contact ons</h3>
-                        <p class="text-muted text-center mb-4">Enim tempor eget pharetra facilisis sed maecenas
-                            adipiscing...</p>
+                        <h3 class="card-header-title text-center mb-4">Contactformulier</h3>
+                        <p class="text-muted text-left mb-4">Heb je andere vragen aan DDVJW? We zijn
+                            van maandag tot en met vrijdag telefonisch te bereiken. Via het onderstaande formulier kun
+                            je op ieder moment contact met ons opnemen. We horen graag van je.</p>
                         <form method="post">
                             {% csrf_token %}
                             {{ form.non_field_errors }}
@@ -68,24 +68,13 @@
                                     </div>
                                 {% endif %}
                             </div>
-                            <button type="submit" class="button is-rounded is-primary w-100" id="btn-pri">Verzenden</button>
+                            <button type="submit" class="button is-rounded is-primary w-100" id="btn-pri">Verzenden
+                            </button>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 d-none d-md-block">
-                <!-- Placeholder for Right Side Image or Content -->
-                <div class="p-5">
-                    <h2 class="display-6">Molestiae rem</h2>
-                    <p class="lead">Provident cillum, autem! Cupidatat ratione eaque nascetur tempora atque alias!
-                        Incididunt adipisci. Inventore per cursus conubia, sint eaque nam, egestas? Alias ullam odio,
-                        nisi
-                        voluptatem platea, occaecat, aperiam quaerat doloremque, augue nesciunt porta cum atque tempus
-                        nisi
-                        mattis curabitur veritatis odit aliqua cursus at, praesentium convallis cum delectus, conubia
-                        error.</p>
-                </div>
-            </div>
         </div>
     </div>
+
 {% endblock template %}

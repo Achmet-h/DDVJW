@@ -28,6 +28,23 @@ def articles_view(request):
     return render(request, 'articles.html', {'articles': articles})
 
 
+def homepage_view(request):
+    # Fetching articles
+    if request.user.is_authenticated:
+        latest_articles = Content.objects.filter(contentType=ContentType.article).order_by('-publish')[:4]
+    else:
+        latest_articles = Content.objects.filter(contentType=ContentType.article, isPremium=False).order_by('-publish')[:4]
+
+    # Fetching blogs
+    if request.user.is_authenticated:
+        latest_blogs = Content.objects.filter(contentType=ContentType.blog).order_by('-publish')[:4]
+    else:
+        latest_blogs = Content.objects.filter(contentType=ContentType.blog, isPremium=False).order_by('-publish')[:4]
+
+    return render(request, 'home.html', {'articles': latest_articles, 'blogs': latest_blogs})
+
+
+
 def articles_search(request):
     query = request.GET.get('q', '')
     base_query = Content.objects.filter(title__icontains=query, contentType=ContentType.article)

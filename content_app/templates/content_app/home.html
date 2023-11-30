@@ -6,25 +6,32 @@
 
 {% block template %}
     <!-- hero -->
-    <div class="header-container">
-        <div class="header-left">
-            <p class="header-subtitle text-white">DDVJW</p>
-            <h1 class="header-title text-white">Didactiek Die Voor Jou Werkt</h1>
-            <p class="header-text text-white">Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nullam nec dapibus nisi.
-                Sed fermentum purus ac tempor vulputate.
-                Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nullam nec dapibus nisi.
-                Sed fermentum purus ac tempor vulputate.
-                Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit. Nullam nec dapibus nisi.
-                Sed fermentum purus ac tempor vulputate.
-            </p>
+    <section class="hero is-halfheight">
+        <div class="hero-body p-0">
+            <div class="columns is-gapless m-0">
+
+                <!-- Left Column for Text -->
+                <div class="column has-background-primary has-text-white is-flex is-align-items-center is-justify-content-center">
+                    <div class="content p-5">
+                        <h2 class="subtitle text-white has-text-weight-light	">DDVJW</h2>
+                        <h1 class="title text-white">Didactiek Die Voor Jou Werkt!</h1>
+                    </div>
+                </div>
+
+                <!-- Right Column for Image -->
+                <div class="column p-0">
+                    <figure class="image m-0">
+                        <img src="{% static 'content_app/images/hero_2.jpg' %}" alt="Team Image"
+                             style="height: 100vh; object-fit: cover; width: 100%;">
+                    </figure>
+                </div>
+
+            </div>
         </div>
-        <div class="header-right">
-            <img src='{% static 'content_app/hero.png' %}' alt="Header Image" class="header-image">
-        </div>
-    </div>
+    </section>
+
+
+
 
     {#        <!-- roadmap -->#}
     {#        <img class="responsive-image" src="{% static 'content_app/roadmap.svg' %}" alt="Roadmap Image">#}
@@ -62,7 +69,8 @@
             <div class="row align-items-center justify-content-end hiw d-flex">
                 <div class="col-6 text-right">
                     <h5><strong>Instrueren</strong></h5>
-                    <p style="text-align: left">Het leerdoel wordt besproken door leerlingen een strategie te laten verwoorden van de
+                    <p style="text-align: left">Het leerdoel wordt besproken door leerlingen een strategie te laten
+                        verwoorden van de
                         verschillende stappen die zij moeten zetten om het doel te realiseren. De leerlingen worden
                         gericht interactief en strategisch geïnstrueerd over hun leerproces, hun zelfregulatie en de
                         bijdrage aan hun eigen ontwikkeling. Leerlingen maken eigen gedachten zichtbaar door ‘het
@@ -114,7 +122,8 @@
             <div class="row align-items-center justify-content-end hiw d-flex">
                 <div class="col-6 text-right">
                     <h5><strong>Zelfstandig werken</strong></h5>
-                    <p style="text-align: left">Leerlingen krijgen ondersteuning door verwijzingen naar strategieën of plannen en werken
+                    <p style="text-align: left">Leerlingen krijgen ondersteuning door verwijzingen naar strategieën of
+                        plannen en werken
                         zelfstandig zonder ongevraagde hulp. Ze ontvangen taakgerichte complimenten en feedback op hun
                         leerproces, verwoorden hun vorderingen en reflecteren op hun strategieën en persoonlijke groei.
                         Zwakkere leerlingen krijgen extra aandacht voor efficiënte technieken, terwijl sterkere
@@ -156,27 +165,26 @@
             <h2 class="pb-3 pt-2 mb-5 title text-center"></h2>
         </div>
     </div>
-    <!-- article section -->
-    <div>
-        <div class="container mt-5 p-3">
-            <h2 class="pb-3 pt-2 border-bottom mb-5 title text-center"> Meest recente artikelen</h2>
-            <div class="row grid">
-                {% for article in articles|slice:"-4" %}
+
+    <!-- Section for Latest Articles -->
+    <div class=" mb-5 py-3">
+        <div class="container mt-5">
+            <h2 class="pb-3 pt-2 border-bottom mb-5 title text-center">Meest recente Artikelen</h2>
+            <div class="row grid card-container">
+                {% for article in articles %}
                     <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
                         <a href="{% url 'article_detail' article.slug %}"
                            class="card-link text-decoration-none link-dark">
-                            <div class="card h-100">
+                            <div class="card">
                                 {% if article.picture %}
                                     <img class="card-img-top" src="{{ article.picture.url }}" alt="{{ article.title }}">
                                 {% else %}
-                                    <!-- Load a default image if no picture is found -->
-                                    <img class="card-img-top"
-                                         src="{% static 'content_app/images/default-article.jpg' %}"
+                                    <img class="card-img-top" src="{% static 'content_app/images/404_not_found.jpg' %}"
                                          alt="Default image">
                                 {% endif %}
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ article.title }}</h5>
-                                    <p class="card-text">{{ article.description|truncatewords:25 }}</p>
+                                    <h5 class="card-title">{{ article.title | truncatewords:3 }}</h5>
+                                    <p class="card-text">{{ article.description| truncatewords:40 }}</p>
                                     <p class="card-date">{{ article.publish|date:"d M, Y" }}</p>
                                 </div>
                             </div>
@@ -186,32 +194,30 @@
             </div>
             <div class="row m-4">
                 <div class="col text-center">
-                    <a href="{% url 'articles_view' %}" class="btn button is-primary is-rounded ">Alle
-                        artikels</a>
+                    <a href="{% url 'articles_view' %}" class="btn button is-primary is-rounded">Alle artikelen</a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- blog section -->
-    <div>
+
+    <!-- Section for Latest Blogs -->
+    <div class="bg-light mb-5 py-3">
         <div class="container mt-5">
-            <h2 class="pb-3 pt-2 border-bottom mb-5 title text-center"> Meest recente Blogs</h2>
-            <div class="row grid">
-                {% for blog in blogs|slice:"-4" %}
+            <h2 class="pb-3 pt-2 border-bottom mb-5 title text-center">Meest recente Blogs</h2>
+            <div class="row grid card-container">
+                {% for blog in blogs %}
                     <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
                         <a href="{% url 'blog_detail' blog.slug %}" class="card-link text-decoration-none link-dark">
                             <div class="card">
                                 {% if blog.picture %}
                                     <img class="card-img-top" src="{{ blog.picture.url }}" alt="{{ blog.title }}">
                                 {% else %}
-                                    =
-                                    <img class="card-img-top"
-                                         src="{% static 'content_app/images/default-article.jpg' %}"
+                                    <img class="card-img-top" src="{% static 'content_app/images/404_not_found.jpg' %}"
                                          alt="Default image">
                                 {% endif %}
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ blog.title }}</h5>
-                                    <p class="card-text">{{ blog.description|truncatewords:50 }}</p>
+                                    <h5 class="card-title">{{ blog.title |truncatewords:3 }}</h5>
+                                    <p class="card-text">{{ blog.description|truncatewords:40 }}</p>
                                     <p class="card-date">{{ blog.publish|date:"d M, Y" }}</p>
                                 </div>
                             </div>
@@ -227,8 +233,11 @@
         </div>
     </div>
 
+
+
+
     <!--  info block 2 -->
-    <div class="container-fluid py-5 bg-light">
+    <div class="container-fluid py-5">
         <div class="row justify-content-center align-items-center">
             <!-- Text Section -->
             <div class="col-lg-5 mt-5">
@@ -236,15 +245,17 @@
                 <p class="mb-4 lead" id="p-info-1">Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Nullam nec dapibus nisi.
                     Sed fermentum purus ac tempor vulputate.</p>
-                    <a href="#" class="btn button is-rounded" id="lid-button">Lees meer!</a>
+                <a href="#" class="btn button is-rounded" id="lid-button">Lees meer!</a>
             </div>
             <!-- Image Section -->
             <div class="col-lg-5 mt-5">
-                <iframe width="560" height="315"
-                        src="https://www.youtube-nocookie.com/embed/nn0y-Rj5Zuw?si=uSb4XJU22e5P_h_F&amp;controls=0"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen></iframe>
+                <figure class="image is-16by9">
+                    <iframe class="has-ratio rounded-5 shadow-lg" width="640" height="360"
+                            src="https://www.youtube-nocookie.com/embed/nn0y-Rj5Zuw?si=uSb4XJU22e5P_h_F&amp;controls=0"
+                            title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                </figure>
             </div>
         </div>
     </div>
@@ -253,7 +264,7 @@
         <div class="row justify-content-center align-items-center">
             <!-- Image Section -->
             <div class="col-lg-5 mt-5">
-                <img src='{% static "content_app/thumbnail.png" %}' alt="Placeholder Image"
+                <img src='{% static "content_app/images/temp.jpg" %}' alt="Placeholder Image"
                      class="img-fluid rounded-5 shadow-lg" id="info-img-1">
             </div>
             <!-- Text Section -->
@@ -262,7 +273,7 @@
                 <p class="mb-4 lead" id="p-info-1">Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Nullam nec dapibus nisi.
                     Sed fermentum purus ac tempor vulputate.</p>
-                    <a href="" class="btn button is-rounded" id="lid-button">Lees meer!</a>
+                <a href="" class="btn button is-rounded" id="lid-button">Lees meer!</a>
             </div>
         </div>
     </div>
@@ -323,7 +334,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="{% url 'FAQ' %}" class="btn button is-primary btn-lg rounded-pill" role="button">FAQ's</a>
+            <a href="{% url 'FAQ' %}" class="btn button is-primary rounded-pill" role="button">FAQ's</a>
         </div>
     </div>
 
