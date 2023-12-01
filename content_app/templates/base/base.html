@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link text-decoration-none">
@@ -50,22 +50,24 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'FAQ' %}">FAQ</a>
+                    <a class="nav-link active" href="{% url 'FAQ' %}">FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                    <a class="nav-link active" href="{% url 'contact' %}">Contact</a>
                 </li>
             </ul>
             <div class="d-flex">
                 {% if user.is_authenticated %}
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a href="#" class="navbar-link text-decoration-none">
-                            <i class="bi bi-person-circle pr-2 m-1 p-2" style="font-size: 24px"></i> Account instellingen
+                            <i class="bi bi-person-circle pr-2 m-1 p-2" style="font-size: 24px"></i> Account
+                            instellingen
                         </a>
                         <div class="navbar-dropdown">
                             <a href="{% url 'profile' %}" class="navbar-item text-decoration-none">Mijn Profiel</a>
                             <hr class="navbar-divider">
-                            <a href="{% url 'update_profile' %}" class="navbar-item text-decoration-none">Persoonlijke gegevens aanpassen</a>
+                            <a href="{% url 'update_profile' %}" class="navbar-item text-decoration-none">Persoonlijke
+                                gegevens aanpassen</a>
                             <hr class="navbar-divider">
                             <a href="{% url 'logout' %}" class="navbar-item text-decoration-none">Uitloggen</a>
                         </div>
@@ -94,7 +96,7 @@
     <div class="container">
         <div class="row">
             <!-- First Column -->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h4><strong>Onderwijsbureau van Leeuwen</strong></h4>
                 <p>Onderwijsbureau Van Leeuwen B.V. is specialist in schoolontwikkeling en het trainen en coachen van
                     docenten. Ook voor het verzorgen van studiedagen, het geven van onderwijsadvies en een uniek
@@ -103,7 +105,7 @@
                 </p>
             </div>
             <!-- Second Column -->
-            <div class="col-md-4" id="sec-col">
+            <div class="col-md-3" id="sec-col">
                 <h4><strong>Contact</strong></h4>
                 <ul class="footer-links">
                     <li>Anne Wadmanwei 4</li>
@@ -113,7 +115,7 @@
                 </ul>
             </div>
             <!-- Third Column -->
-            <div class="col-md-4" id="third-col">
+            <div class="col-md-3" id="third-col">
                 <h4><strong>DDVJW</strong></h4>
                 <ul class="footer-links">
                     <li><i class="bi bi-house-fill"></i><a href="{% url 'home' %}">Home</a></li>
@@ -122,6 +124,18 @@
                     <li><i class="bi bi-broadcast-pin"></i><a href="#">Podcast</a></li>
                     <li><i class="bi bi-envelope-fill"></i><a href="{% url 'contact' %}">Contact</a></li>
                     <li><i class="bi bi-question-lg"></i><a href="{% url 'FAQ' %}">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3" id="forth-col">
+                <h4><strong>Belangrijke Documenten</strong></h4>
+                <ul class="footer-links">
+                    <li><i class="bi bi-file-earmark-pdf-fill"></i><a target="_blank"
+                                                                      href="{% static 'content_app/media/upload/Algemene voorwaarden Onderwijsbureau Van Leeuwen digitaal 20220812.pdf' %}">Algemene
+                        voorwaarden</a>
+                    </li>
+                    <li><i class="bi bi-file-earmark-pdf-fill"></i><a target="_blank"
+                                                                      href="{% static 'content_app/media/upload/Privacyverklaring Onderwijsbureau Van Leeuwen B.V. 20221008.pdf' %}">Privacyverklaring</a>
+                    </li>
                 </ul>
             </div>
         </div>

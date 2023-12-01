@@ -33,7 +33,8 @@ def homepage_view(request):
     if request.user.is_authenticated:
         latest_articles = Content.objects.filter(contentType=ContentType.article).order_by('-publish')[:4]
     else:
-        latest_articles = Content.objects.filter(contentType=ContentType.article, isPremium=False).order_by('-publish')[:4]
+        latest_articles = Content.objects.filter(contentType=ContentType.article, isPremium=False).order_by('-publish')[
+                          :4]
 
     # Fetching blogs
     if request.user.is_authenticated:
@@ -42,7 +43,6 @@ def homepage_view(request):
         latest_blogs = Content.objects.filter(contentType=ContentType.blog, isPremium=False).order_by('-publish')[:4]
 
     return render(request, 'home.html', {'articles': latest_articles, 'blogs': latest_blogs})
-
 
 
 def articles_search(request):

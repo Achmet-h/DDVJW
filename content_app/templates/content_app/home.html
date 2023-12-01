@@ -1,6 +1,6 @@
 {% extends "base/base.html" %}
 {% load static %}
-{% block title %} Homepagina {% endblock %}
+{% block title %}DDVJW - Homepagina {% endblock %}
 
 
 
@@ -15,6 +15,7 @@
                     <div class="content p-5">
                         <h2 class="subtitle text-white has-text-weight-light	">DDVJW</h2>
                         <h1 class="title text-white">Didactiek Die Voor Jou Werkt!</h1>
+                        <p>Onderbouwd, doelgericht en samen het onderwijs op uw <br>school ontwikkelen</p>
                     </div>
                 </div>
 
@@ -273,7 +274,7 @@
                 <p class="mb-4 lead" id="p-info-1">Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Nullam nec dapibus nisi.
                     Sed fermentum purus ac tempor vulputate.</p>
-                <a href="" class="btn button is-rounded" id="lid-button">Lees meer!</a>
+                <a href="{% url 'podcast' %}" class="btn button is-rounded" id="lid-button">Lees meer!</a>
             </div>
         </div>
     </div>
