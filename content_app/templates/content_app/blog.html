@@ -31,22 +31,22 @@
     </div>
 </div>
 
-<div class="container">
+<div class="latest-c container">
     <!-- articles.html -->
     {% if blogs %}
         <div class="columns is-multiline">
             {% for blog in blogs %}
                 <div class="column is-one-quarter-desktop is-half-tablet">
-                    <a href="{% url 'article_detail' blog.slug %}" class="text-white">
-                        <div class="card">
+                    <a href="{% url 'blog_detail' blog.slug %}" class="text-white">
+                        <div class="card rounded-5">
                             <div class="card-image">
                                 {% if blog.picture %}
                                     <figure class="image is-4by4">
-                                        <img src="{{ blog.picture.url }}" alt="{{ blog.title }}">
+                                        <img class="rounded-5" src="{{ blog.picture.url }}" alt="{{ blog.title }}">
                                     </figure>
                                 {% else %}
-                                    <figure class="image is-4by4">
-                                        <img src="{% static 'content_app/images/default-article.jpg' %}" alt="Default image">
+                                    <figure class="image is-4by4 rounded-5">
+                                        <img class="rounded-5" src="{% static 'content_app/images/default-article.jpg' %}" alt="Default image">
                                     </figure>
                                 {% endif %}
                             </div>

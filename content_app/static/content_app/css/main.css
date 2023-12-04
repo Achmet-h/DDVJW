@@ -136,22 +136,27 @@
 }
 
 
-/*FAQ container---------------------*/
 /* card styles */
-.card-container {
+.latest-c .card-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    flex-direction: row;
 }
 
-.card-container .col-sm-6.col-md-4.col-lg-3 {
+.latest-c .card {
     display: flex;
-    flex: 1 0 50%; /* Adjusts the flex-basis to 25% for 4 cards in a row */
     flex-direction: column;
+    height: 100%; /* This will make sure the card stretches in height */
 }
 
-.card-container .card {
-    flex-grow: 3; /* Allows the card to grow and fill the space */
+.latest-c .card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
 }
+
 
 
 /*faq styles*/

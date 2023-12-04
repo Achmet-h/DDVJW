@@ -25,9 +25,10 @@ class Content(models.Model):
 
 
 class Category(models.TextChoices):
-    Didactiek = 'Didactiek', 'Didactiek'
-    Begeleiding = 'Begeleiding', 'Begeleiding'
-    Ondersteuning = 'Ondersteuning', 'Ondersteuning'
+    Didactiek = 'Vragen over didactiek', 'Vragen over didactiek'
+    Pedagogiek = 'Vragen over pedagogiek', 'Vragen over pedagogiek'
+    Algemeen  = 'Algemene vragen over lesgeven', 'Algemene vragen over lesgeven'
+    Begeleiding = 'Training en coaching', 'Training en coaching'
 
 
 class FAQ(models.Model):

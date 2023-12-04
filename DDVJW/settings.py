@@ -41,7 +41,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "ckeditor",
     "jazzmin",
-    "snowebsvg",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -56,8 +55,8 @@ INSTALLED_APPS = [
 JAZZMIN_SETTINGS = {
     "site_title": "Trainer Panel",
     "site_header": "Adminstratie",
-    "site_logo": "content_app/Logo_DDVJW_splitted.png",
-    "login_logo": "content_app/Logo_DDVJW_splitted.png",
+    "site_logo": "content_app/images/Logo_DDVJW_splitted.png",
+    "login_logo": "content_app/images/Logo_DDVJW_splitted.png",
     "site_icon": "content_app/favicon-32x32.png",
     "welcome_sign": "Welkom naar de Trainer Dashboard",
     "default_theme": "slate",
