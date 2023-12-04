@@ -18,32 +18,36 @@
     </div>
 
     <!-- Faq section -->
-
-     <div class="container-lg p-5">
+    <div class="container-lg p-5">
         {% for category, faqs_in_category in faq_by_category.items %}
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-title pt-4"><strong>{{ category }}</strong></h1>
-                    <div class="accordion" id="accordion-{{ category | slugify }}">
+                    <div class="accordion" id="accordion-{{ category|slugify }}">
                         {% for faq in faqs_in_category %}
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading-{{ faq.id }}">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ faq.id }}" aria-expanded="false" aria-controls="collapse-{{ faq.id }}">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse-{{ faq.id }}" aria-expanded="false"
+                                            aria-controls="collapse-{{ faq.id }}">
                                         {{ faq.question }}
                                     </button>
                                 </h2>
-                                <div id="collapse-{{ faq.id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ faq.id }}" data-bs-parent="#accordion-{{ category | slugify }}">
+                                <div id="collapse-{{ faq.id }}" class="accordion-collapse collapse"
+                                     aria-labelledby="heading-{{ faq.id }}"
+                                     data-bs-parent="#accordion-{{ category|slugify }}">
                                     <div class="accordion-body p-3">
                                         {{ faq.answer|safe }}
                                     </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            </div>                    {% endfor %}
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
+
+
     <script src="{% static 'content_app/css/main.js' %}"></script>
 
 {% endblock template %}

@@ -12,11 +12,26 @@ def home(request):
 
 
 def faq_view(request):
-    faqs = FAQ.objects.all()
-    faq_by_category = defaultdict(list)
-    for faq in faqs:
-        faq_by_category[faq.category].append(faq)
-    return render(request, 'FAQ.html', {'faq_by_category': dict(faq_by_category)})
+    # Define the order of categories
+    category_order = [
+        'Vragen over didactiek',  # Didactiek
+        'Vragen over pedagogiek',  # Pedagogiek
+        'Algemene vragen over lesgeven',  # Algemeen
+        'Training en coaching'  # Begeleiding
+    ]
+
+    faq_by_category = {cat: [] for cat in category_order}  # Initialize with predefined order
+
+    for faq in FAQ.objects.all():
+        category_display = faq.get_category_display()
+        if category_display in faq_by_category:
+            faq_by_category[category_display].append(faq)
+
+    # Ensure only categories with FAQs are passed to the template
+    faq_by_category = {k: v for k, v in faq_by_category.items() if v}
+
+    context = {'faq_by_category': faq_by_category}
+    return render(request, 'FAQ.html', context)
 
 
 def articles_view(request):
