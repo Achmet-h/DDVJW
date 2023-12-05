@@ -32,11 +32,6 @@
     </section>
 
 
-
-
-    {#        <!-- roadmap -->#}
-    {#        <img class="responsive-image" src="{% static 'content_app/roadmap.svg' %}" alt="Roadmap Image">#}
-    <!-- roadmap -->
     <div class="">
         <div class="container">
             <h2 class="pb-3 pt-2 border-bottom mb-5 title text-center"></h2>
@@ -53,6 +48,10 @@
                         uit?’ (feed up), etc. De voorkennis van de leerlingen wordt (in samenspraak) interactief
                         geactiveerd.</p>
                 </div>
+                <div class="col-2">
+                    <img class="icon-img d-sm-inline-block" src="{% static 'content_app/SVG/Iconen_DDVJW_01.svg' %}"
+                         style="height: 250px; width: 250px" alt="icon">
+                </div>
             </div>
             <!--path between 1-2-->
             <div class="row timeline">
@@ -68,6 +67,10 @@
             </div>
             <!--second section-->
             <div class="row align-items-center justify-content-end hiw d-flex">
+                <div class="col-2">
+                    <img class="icon-img" src="{% static 'content_app/SVG/Iconen_DDVJW-02.svg' %}"
+                         style="height: 250px; width: 250px" alt="icon">
+                </div>
                 <div class="col-6 text-right">
                     <h5><strong>Instrueren</strong></h5>
                     <p style="text-align: left">Het leerdoel wordt besproken door leerlingen een strategie te laten
@@ -106,6 +109,10 @@
                         geïnstrueerd in wat nog beter kan. Sterkere leerlingen krijgen meer of extra
                         oefenstof/(deel)taken geïnstrueerd.</p>
                 </div>
+                <div class="col-2">
+                    <img class="icon-img" src="{% static 'content_app/SVG/Iconen_DDVJW-03.svg' %}"
+                         style="height: 250px; width: 250px" alt="icon">
+                </div>
             </div>
             <!--path between 3-4-->
             <div class="row timeline">
@@ -121,6 +128,10 @@
             </div>
             <!--second section-->
             <div class="row align-items-center justify-content-end hiw d-flex">
+                <div class="col-2">
+                    <img class="icon-img" src="{% static 'content_app/SVG/Iconen_DDVJW-04.svg' %}"
+                         style="height: 250px; width: 250px" alt="icon">
+                </div>
                 <div class="col-6 text-right">
                     <h5><strong>Zelfstandig werken</strong></h5>
                     <p style="text-align: left">Leerlingen krijgen ondersteuning door verwijzingen naar strategieën of
@@ -162,6 +173,10 @@
                         (zelfregulatie). Leerlingen verwoorden wat er nodig is voor een nog beter resultaat (feed
                         forward). Alle leerlingen ontvangen (individueel of in de groep) feedback</p>
                 </div>
+                <div class="col-2">
+                    <img class="icon-img" src="{% static 'content_app/SVG/Iconen_DDVJW-05.svg' %}"
+                         style="height: 250px; width: 250px" alt="icon">
+                </div>
             </div>
             <h2 class="pb-3 pt-2 mb-5 title text-center"></h2>
         </div>
@@ -178,14 +193,15 @@
                            class="card-link text-decoration-none link-dark">
                             <div class="card rounded-5">
                                 {% if article.picture %}
-                                    <img class="card-img-top rounded-5" src="{{ article.picture.url }}" alt="{{ article.title }}">
+                                    <img class="card-img-top rounded-5" src="{{ article.picture.url }}"
+                                         alt="{{ article.title }}">
                                 {% else %}
                                     <img class="card-img-top" src="{% static 'content_app/images/404_not_found.jpg' %}"
                                          alt="Default image">
                                 {% endif %}
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ article.title | truncatewords:13 }}</h5>
-                                    <p class="card-text">{{ article.description| truncatewords:40 }}</p>
+                                    <h5 class="card-title"><strong>{{ article.title | truncatewords:13 }}</strong></h5>
+                                    <p class="card-text">{{ article.description| truncatewords:40 | safe }}</p>
                                     <p class="card-date">{{ article.publish|date:"d M, Y" }}</p>
                                 </div>
                             </div>
@@ -211,14 +227,15 @@
                         <a href="{% url 'blog_detail' blog.slug %}" class="card-link text-decoration-none link-dark">
                             <div class="card rounded-5">
                                 {% if blog.picture %}
-                                    <img class="card-img-top rounded-5" src="{{ blog.picture.url }}" alt="{{ blog.title }}">
+                                    <img class="card-img-top rounded-5" src="{{ blog.picture.url }}"
+                                         alt="{{ blog.title }}">
                                 {% else %}
                                     <img class="card-img-top" src="{% static 'content_app/images/404_not_found.jpg' %}"
                                          alt="Default image">
                                 {% endif %}
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ blog.title |truncatewords:3 }}</h5>
-                                    <p class="card-text">{{ blog.description|truncatewords:40 }}</p>
+                                    <h5 class="card-title"><strong>{{ blog.title |truncatewords:13 }}</strong></h5>
+                                    <p class="card-text">{{ blog.description|truncatewords:40 | safe}}</p>
                                     <p class="card-date">{{ blog.publish|date:"d M, Y" }}</p>
                                 </div>
                             </div>

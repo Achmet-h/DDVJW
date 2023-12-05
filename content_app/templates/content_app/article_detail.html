@@ -7,14 +7,10 @@
 <div class="container article-content mt-5 mb-5">
     <div class="row">
         <div class="col-lg-8 mx-auto">
-            <!-- Article Image -->
-            {% if article.picture %}
-            <img src="{{ article.picture.url }}" alt="{{ article.title }}" class="article-image mb-3">
-            {% endif %}
 
             <h1 class="mb-3">{{ article.title }}</h1>
 
-            <p class="text-muted">Gepubliceerd op: {{ article.publish|date:"d M, Y" }}</p>
+            <p class="text-muted">Gepubliceerd op: {{ article.publish|date:"d M, Y" | lower}}</p>
 
             <div>{{ article.description|safe }}</div>
         </div>
