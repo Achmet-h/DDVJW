@@ -4,112 +4,125 @@
 
 {% block template %}
 
-<!-- hero small -->
- <div class="hero-body has-background-primary">
-    <div class="container has-text-centered">
-      <p class="title">
-        Schrijf je in!
-      </p>
-      <p class="subtitle">
-        Wordt lid van de community!
-      </p>
+    <!-- hero small -->
+    <div class="hero-body has-background-primary">
+        <div class="container has-text-centered">
+            <p class="title">
+                Schrijf je in!
+            </p>
+            <p class="subtitle">
+                Wordt lid van de community!
+            </p>
+        </div>
     </div>
-  </div>
 
 
-<div class="container mt-5">
-    <!-- sign up Section -->
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <!-- sign up Form -->
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title text-center mb-4">Lid worden</h3>
-                    <p class="text-muted text-center mb-4">Enim tempor eget pharetra facilisis sed maecenas
-                        adipiscing...</p>
-                    <form method="post">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="id_first_name">Voornaam</label>
-                            <input type="text" name="first_name" id="id_first_name" class="form-control" required>
-                            {% if form.first_name.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.first_name.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_last_name">Achternaam</label>
-                            <input type="text" name="last_name" id="id_last_name" class="form-control" required>
-                            {% if form.last_name.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.last_name.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_email">Emailadres</label>
-                            <input type="email" name="email" id="id_email" class="form-control" required>
-                            {% if form.email.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.email.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_telephone">Telefoonnummer</label>
-                            <input type="tel" name="telephone" id="id_telephone" class="form-control" required>
-                            {% if form.telephone.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.telephone.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_school_name">Naam van de school</label>
-                            <input type="text" name="school_name" id="id_school_name" class="form-control" required>
-                            {% if form.school_name.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.school_name.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_password1">Wachtwoord</label>
-                            <input type="password" name="password1" id="id_password1" class="form-control" required>
-                            {% if form.password1.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.password1.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="mb-3">
-                            <label for="id_password2">Wachtwoord bevestigen</label>
-                            <input type="password" name="password2" id="id_password2" class="form-control" required>
-                            {% if form.password2.errors %}
-                                <div class="alert alert-danger">
-                                    {{ form.password2.errors }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <button type="submit" class="btn button is-rounded is-primary w-100">Sign Up</button>
-                    </form>
+    <div class="container mt-5">
+        <!-- sign up Section -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!-- sign up Form -->
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="id_first_name">Voornaam</label>
+                                <input type="text" name="first_name" id="id_first_name" class="form-control" required>
+                                {% if form.first_name.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.first_name.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_last_name">Achternaam</label>
+                                <input type="text" name="last_name" id="id_last_name" class="form-control" required>
+                                {% if form.last_name.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.last_name.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_email">Emailadres</label>
+                                <input type="email" name="email" id="id_email" class="form-control" required>
+                                {% if form.email.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.email.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_telephone">Telefoonnummer</label>
+                                <input type="tel" name="telephone" id="id_telephone" class="form-control" required>
+                                {% if form.telephone.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.telephone.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_school_name">Naam van de school</label>
+                                <input type="text" name="school_name" id="id_school_name" class="form-control" required>
+                                {% if form.school_name.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.school_name.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_password1">Wachtwoord</label>
+                                <input type="password" name="password1" id="id_password1" class="form-control" required>
+                                {% if form.password1.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.password1.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_password2">Wachtwoord bevestigen</label>
+                                <input type="password" name="password2" id="id_password2" class="form-control" required>
+                                {% if form.password2.errors %}
+                                    <div class="alert alert-danger">
+                                        {{ form.password2.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <button type="submit" class="btn button is-rounded is-primary w-100">Sign Up</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6 d-none d-md-block">
-            <!-- Placeholder for Right Side Image or Content -->
-            <div class="p-5">
-                <h2 class="display-6">Molestiae rem</h2>
-                <p class="lead">Provident cillum, autem! Cupidatat ratione eaque nascetur tempora atque alias!
-                    Incididunt adipisci. Inventore per cursus conubia, sint eaque nam, egestas? Alias ullam odio, nisi
-                    voluptatem platea, occaecat, aperiam quaerat doloremque, augue nesciunt porta cum atque tempus nisi
-                    mattis curabitur veritatis odit aliqua cursus at, praesentium convallis cum delectus, conubia
-                    error.</p>
+            <div class="col-md-6 d-none d-md-block">
+                <!-- Placeholder for Right Side Image or Content -->
+                <div class="p-5">
+                    <h2>Word exclusief lid en krijg toegang tot didactische artikelen!</h2>
+                    <p>Als lid van onze gemeenschap ontgrendel je exclusieve toegang tot een rijkdom aan kennis. Ontdek
+                        artikelen die de DDVJW methodiek in didactiek verkennen, en verbreed je expertise met inzichten
+                        die speciaal voor jouw werk zijn samengesteld.</p>
+                    <p>Lidmaatschapsvoordelen omvatten:</p>
+                    <ul>
+                        <li>Onbeperkte toegang tot premium artikelen over didactiek.</li>
+                        <li>Diepgaande verkenning van de DDVJW methodiek.</li>
+                        <li>Praktische tips en strategieën om toe te passen in je dagelijkse praktijk.</li>
+                        <li>Updates over de nieuwste trends en onderzoeken in het onderwijs.</li>
+                    </ul>
+                    <p>Om lid te worden en je professionele ontwikkeling te starten:</p>
+                    <ol style="list-style-position: inside">
+                        <li>Vul je gegevens in het aanmeldingsformulier in.</li>
+                        <li>Kies een sterk wachtwoord voor je account en bevestig dit.</li>
+                        <li>Klik op 'Sign Up' om je registratie te voltooien.</li>
+                    </ol>
+                    <p>Vragen? Contact ons via <a
+                            href="mailto:info@didaktiekdievoorjouwerkt">info@didaktiekdievoorjouwerkt</a> of bel naar 06 25 222 765 voor
+                        persoonlijke assistentie.</p>
+                    <p>Mis deze kans niet om aan de voorhoede te staan van educatieve innovatie. Schrijf je nu in!</p>
+                </div>
+
             </div>
         </div>
     </div>
-</div>
 {% endblock template %}
 
 

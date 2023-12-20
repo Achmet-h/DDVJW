@@ -7,12 +7,20 @@
     <div class="hero-body has-background-primary">
         <div class="container has-text-centered">
             <p class="title">
-                 Profiel detail aanpassen
+                Profiel detail aanpassen
             </p>
             <p class="subtitle">
             </p>
         </div>
     </div>
+    {% if messages %}
+        <div class="container mt-3" id="temp-msg">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
 
     <div class="container mt-5">
         <!-- Update Profile Section -->
@@ -84,9 +92,12 @@
 
                             <!-- Submit Button -->
                             <div class="text-center mt-4">
-                                <button type="submit" class="btn button is-outlined is-primary is-rounded btn-lg">Update
+                                <button type="submit" class="btn button is-outlined is-primary is-rounded">Update
                                     Profile
                                 </button>
+                                <a  class="btn button is-primary is-rounded" href="{% url 'profile' %}">
+                                    Terug
+                                </a>
                             </div>
                         </form>
                     </div>

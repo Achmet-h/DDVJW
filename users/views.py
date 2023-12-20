@@ -67,17 +67,17 @@ def contact_view(request):
 
 def update_profile(request):
     if request.method == 'POST':
+        # Assume 'ProfileForm' is your form class for updating the profile
         form = UserUpdateForm(request.POST, instance=request.user)
-
         if form.is_valid():
             form.save()
-            messages.success(request, 'Your profile has been updated!')
-            return redirect('profile')
-
+            messages.success(request, 'Uw profiel is succesvol bijgewerkt!')
+            return redirect('update_profile')  # Redirect to the same view
+        else:
+            messages.error(request, 'Er zijn enkele fouten.')
     else:
         form = UserUpdateForm(instance=request.user)
-
-    return render(request, 'users/update_profile.html', {'form': form})
+    return render(request, 'update_profile.html', {'form': form})
 
 
 def profile_view(request):

@@ -10,71 +10,63 @@
                 Contact ons
             </p>
             <p class="subtitle text-left">
-                Contacteer ons voor meer informatie
+                Heb je andere vragen aan DDVJW? We zijn van maandag tot en met vrijdag telefonisch te bereiken. Via het
+                onderstaande formulier kun je op ieder moment contact met ons opnemen. We horen graag van je.
             </p>
         </div>
     </div>
-    <div class="container mt-5">
+    <div class="container mt-5 d-flex justify-content-center">
         <!-- contact Section -->
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <!-- Contact Form -->
-                <div class="card">
-                    <div class="card-body">
-                        <h3 class="card-header-title text-center mb-4">Contactformulier</h3>
-                        <p class="text-muted text-left mb-4">Heb je andere vragen aan DDVJW? We zijn
-                            van maandag tot en met vrijdag telefonisch te bereiken. Via het onderstaande formulier kun
-                            je op ieder moment contact met ons opnemen. We horen graag van je.</p>
-                        <form method="post">
-                            {% csrf_token %}
-                            {{ form.non_field_errors }}
-                            <div class="mb-3 styled-input">
-                                <label for="first_name">Voornaam</label>
-                                <input type="text" name="first_name" id="first_name" class="form-control" required>
-                            </div>
-                            <div class="mb-3 styled-input">
-                                <label for="last_name">Achternaam</label>
-                                <input type="text" name="last_name" id="last_name" class="form-control" required>
-                                {% if form.username.errors %}
-                                    <div class="alert alert-danger">
-                                        {{ form.first_name.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="mb-3">
-                                <label for="email">Emailadres</label>
-                                <input type="email" name="email" id="email" class="form-control" required>
-                                {% if form.email.errors %}
-                                    <div class="alert alert-danger">
-                                        {{ form.email.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="mb-3">
-                                <label for="telephone">Telefoonnummer</label>
-                                <input type="tel" name="telephone" id="telephone" class="form-control" required>
-                                {% if form.telephone.errors %}
-                                    <div class="alert alert-danger">
-                                        {{ form.telephone.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <div class="mb-3">
-                                <label for="message">Bericht</label>
-                                <textarea name="message" id="message" class="form-control" required></textarea>
-                                {% if form.message.errors %}
-                                    <div class="alert alert-danger">
-                                        {{ form.message.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                            <button type="submit" class="button is-rounded is-primary w-100" id="btn-pri">Verzenden
-                            </button>
-                        </form>
-                    </div>
+        <div class="col-md-6">
+            <!-- Contact Form -->
+            <form method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="mb-3 styled-input">
+                    <label for="first_name">Voornaam</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control" required>
                 </div>
-            </div>
+                <div class="mb-3 styled-input">
+                    <label for="last_name">Achternaam</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control" required>
+                    {% if form.username.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.first_name.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="email">Emailadres</label>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                    {% if form.email.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.email.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="telephone">Telefoonnummer</label>
+                    <input type="tel" name="telephone" id="telephone" class="form-control" required>
+                    {% if form.telephone.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.telephone.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="message">Bericht</label>
+                    <textarea name="message" id="message" class="form-control" required></textarea>
+                    {% if form.message.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.message.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <button type="submit" class="button is-rounded is-primary w-100" id="btn-pri">Verzenden
+                </button>
+            </form>
         </div>
+
     </div>
 
 {% endblock template %}

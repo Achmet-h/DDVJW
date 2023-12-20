@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
+
 class Role(models.TextChoices):
     TRAINER = 'trainer', 'Trainer'
     CLIENT = 'client', 'Client'
@@ -73,4 +74,3 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = CustomAccountManager()
-

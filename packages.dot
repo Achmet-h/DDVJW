@@ -1,0 +1,18 @@
+digraph "packages" {
+rankdir=BT
+charset="utf-8"
+"users" [color="black", label=<users>, shape="box", style="solid"];
+"users.admin" [color="black", label=<users.admin>, shape="box", style="solid"];
+"users.apps" [color="black", label=<users.apps>, shape="box", style="solid"];
+"users.forms" [color="black", label=<users.forms>, shape="box", style="solid"];
+"users.migrations" [color="black", label=<users.migrations>, shape="box", style="solid"];
+"users.migrations.0001_initial" [color="black", label=<users.migrations.0001_initial>, shape="box", style="solid"];
+"users.migrations.0002_alter_user_role" [color="black", label=<users.migrations.0002_alter_user_role>, shape="box", style="solid"];
+"users.models" [color="black", label=<users.models>, shape="box", style="solid"];
+"users.tests" [color="black", label=<users.tests>, shape="box", style="solid"];
+"users.urls" [color="black", label=<users.urls>, shape="box", style="solid"];
+"users.views" [color="black", label=<users.views>, shape="box", style="solid"];
+"users.admin" -> "users.models" [arrowhead="open", arrowtail="none"];
+"users.forms" -> "users.models" [arrowhead="open", arrowtail="none"];
+"users.views" -> "users.forms" [arrowhead="open", arrowtail="none"];
+}

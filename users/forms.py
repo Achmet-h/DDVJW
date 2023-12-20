@@ -98,6 +98,13 @@ class ContactForm(forms.Form):
 
 
 class UserUpdateForm(forms.ModelForm):
+    telephone = forms.CharField(required=True)
+    school_name = forms.CharField(required=True)
+
     class Meta:
         model = User
         fields = ['email', 'first_name', 'last_name', 'telephone', 'school_name']
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')  # here comes validation for email
+        return email

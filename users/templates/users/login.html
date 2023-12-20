@@ -3,16 +3,16 @@
 {% block title %} Inloggen {% endblock %}
 
 {% block template %}
-   <div class="hero-body has-background-primary">
-    <div class="container has-text-centered">
-      <p class="title">
-        Inloggen
-      </p>
-      <p class="subtitle">
-        Log in om je profiel te bekijken
-      </p>
+    <div class="hero-body has-background-primary">
+        <div class="container has-text-centered">
+            <p class="title">
+                Inloggen
+            </p>
+            <p class="subtitle">
+                Log in om je profiel te bekijken
+            </p>
+        </div>
     </div>
-  </div>
 
 
     <div class="container mt-5">
@@ -22,9 +22,6 @@
                 <!-- Login Form -->
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title text-center mb-4">Log in</h3>
-                        <p class="text-muted text-center mb-4">Enim tempor eget pharetra facilisis sed maecenas
-                            adipiscing...</p>
                         <form method="post">
                             {% csrf_token %}
                             {% if form.non_field_errors %}
@@ -40,12 +37,14 @@
                                 <label for="id_password">Wachtwoord</label>
                                 <input type="password" name="password" id="id_password" class="form-control" required>
                             </div>
-                            <button type="submit" class=" btn button is-primary is-rounded w-100" id="btn-pri">LOG IN</button>
+                            <button type="submit" class=" btn button is-primary is-rounded w-100" id="btn-pri">LOG IN
+                            </button>
                             <div class="text-center mt-3">
                                 <span>OF</span>
                             </div>
                             <a href="{% url 'signup' %}">
-                                <button type="button" class="btn button is-outlined is-rounded w-100 mt-3" id="lid-button">WORDT
+                                <button type="button" class="btn button is-outlined is-rounded w-100 mt-3"
+                                        id="lid-button">WORDT
                                     LID
                                 </button>
                             </a>
@@ -55,18 +54,25 @@
             </div>
             <div class="col-md-6 d-none d-md-block">
                 <!-- Placeholder for Right Side Image or Content -->
-                <div class="p-5">
-                    <h2 class="display-6">Molestiae rem</h2>
-                    <p class="lead">Provident cillum, autem! Cupidatat ratione eaque nascetur tempora atque alias!
-                        Incididunt adipisci. Inventore per cursus conubia, sint eaque nam, egestas? Alias ullam odio,
-                        nisi
-                        voluptatem platea, occaecat, aperiam quaerat doloremque, augue nesciunt porta cum atque tempus
-                        nisi
-                        mattis curabitur veritatis odit aliqua cursus at, praesentium convallis cum delectus, conubia
-                        error.</p>
+                <div>
+                    <h2>Login</h2>
+                    <p>Log in om je profiel te bekijken en toegang te krijgen tot onze exclusieve artikelen.</p>
+                    <p>Als je nog geen lid bent, mis dan niet de kans om lid te worden.
+                        Door lid te worden, kun je:</p>
+                       <ul>
+                        <li>Onbeperkte toegang tot premium artikelen over didactiek.</li>
+                        <li>Diepgaande verkenning van de DDVJW methodiek.</li>
+                        <li>Praktische tips en strategieën om toe te passen in je dagelijkse praktijk.</li>
+                        <li>Updates over de nieuwste trends en onderzoeken in het onderwijs.</li>
+                    </ul>
+                    <h3>Nog geen lid?</h3>
+                    <p>Registreren is eenvoudig en geeft je direct voordeel. Klik op 'Wordt Lid' om te beginnen en
+                        ontdek wat DDVJW jou kan bieden.</p>
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
 {% endblock template %}

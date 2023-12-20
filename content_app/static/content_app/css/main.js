@@ -69,6 +69,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 500);
     };
 
+   const messageContainer = document.getElementById('temp-msg');
+        if (messageContainer) {
+            setTimeout(function() {
+                messageContainer.style.opacity = '0';
+
+                setTimeout(function() {
+                    messageContainer.style.display = 'none';
+                }, 1000);
+            }, 3000);
+        }
 
 });
 

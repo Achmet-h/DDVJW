@@ -299,3 +299,9 @@
 .info-section {
     padding: 20px;
 }
+
+
+#temp-msg {
+    transition: opacity 1s ease-out;
+    opacity: 1;
+}
